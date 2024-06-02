@@ -1,0 +1,10 @@
+Log into your TryHackMe Account and click on your profile picture in the top right corner, then click on Access.
+Choose one of the EU-Regular or the region that is the closest to you and then click on Regenerate.
+Wait till it is refreshed and click Download configuration file.
+
+Im using Kali Linux and i moved the downloaded yourusername.ovpn file to my /home/yourusername/Desktop/ 
+
+With the following command (if u are not root,else no sudo needed) you can connect then to TryHackMe and then you are in the same Network as the Machines u want to attack.
+You can check it if u can ping 10.10.10.10 then your connection is working.
+
+sudo openvpn yourusername.ovpn
