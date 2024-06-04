@@ -1,0 +1,25 @@
+Day 2
+Sudo Security Bypass : Difficulty Info
+
+In this Room of TryHackMe we talk about the CVE-2019-14287.
+The vulnerability in this is a older version of sudo <1.8.28, yeah 2019 but you never know if it could appear on your journey.
+
+The sudo command allows you to execute the command you wanna use as an another user.Normally it defaults to user 0 (root) but then you need to know the password of root.
+The vulnerability here is that we use the UID -1 and this falls back to the user root.
+You get root access then and can change everything.This will only work if you got non-root sudo permission for a command.
+
+1. Deploy!
+Deploy the machine by clicking on start machine.
+
+2. Security Bypass
+ssh into the target machine with the IP you are given and the credentials that are given. Username here is tryhackme and the password is tryhackme.
+
+ssh -p 2222 tryhackme@machine_ip
+
+After u ssh'ed into the machine type sudo -l. You will get to know u can run bash as sudo.
+
+Answer : /bin/bash
+
+Use the command sudo -u#-1 bash and then cat /root/root.txt
+
+Answer : THM{l33t_s3cur1ty_bypass}
