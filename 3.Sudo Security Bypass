@@ -1,5 +1,5 @@
 Day 2
-Sudo Security Bypass : Difficulty Info
+Difficulty Info
 
 In this Room of TryHackMe we talk about the CVE-2019-14287.
 The vulnerability in this is a older version of sudo <1.8.28, yeah 2019 but you never know if it could appear on your journey.
