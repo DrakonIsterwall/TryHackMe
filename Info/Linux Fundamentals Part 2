@@ -1,0 +1,74 @@
+1.Introduction
+
+2.Accessing Your Linux Machine Using SSH (Deploy)
+Accessing the Machine with ssh with the ip adress of the remote machine and username (here tryhackme) and password(tryhackme)
+
+ssh tryhackme@machine_ip
+
+3.Introduction to Flags and Switches
+The explanation of the comman man explained on the command ls. It helps a lot to get to know what flags -x you can use with a 
+command.
+
+Answer:down,-h
+
+4.Filesystem Interaction Continued
+
+In this task, we're going to learn some more commands for interacting with the filesystem to allow us to:
+
+    create files and folders
+    move files and folders
+    delete files and folders
+
+Here we see the commands touch (create a file),mkdir(create/make a directory),cp(copy file or folder),
+mv(move a file or folder),rm(remove a file or folder),file(determine the file type)
+
+Answer:touch newnote,ASCII text,mv myfile myfolder,THM{FILESYSTEM}
+
+5.Permissions101
+
+With ls -lh you can see your permissions on the files.
+With su we can switch users.
+
+Files/Folders can have different permissions,that means a user can maybe read a file but not write on it or can write and read it
+but can not execute it.
+
+with su -l username we can drop into a new shell with the home directory of the user instead of continuing to use the directory
+of the previous user.
+
+Answer:user2,su user2,THM{SU_USER2}
+
+6.Common Directories
+
+We get to know the folders /etc,/var,/root,/tmp
+
+/etc (sudoers file and more)
+This root directory is one of the most important root directories on your system. The etc folder (short for etcetera) is a 
+commonplace location to store system files that are used by your operating system. 
+For example, the sudoers file highlighted in the screenshot below contains a list of the users & groups that have permission 
+to run sudo or a set of commands as the root user.
+Also highlighted below are the "passwd" and "shadow" files. These two files are special for Linux as they show how your 
+system stores the passwords for each user in encrypted formatting called sha512.
+
+/var (good for logfiles of services)
+The "/var" directory, with "var" being short for variable data,  is one of the main root folders found on a Linux install. 
+This folder stores data that is frequently accessed or written by services or applications running on the system. For example, 
+log files from running services and applications are written here (/var/log), or other data that is not necessarily associated 
+with a specific user (i.e., databases and the like).
+
+/root (Maybe important data of root saved here)
+Unlike the /home directory, the /root folder is actually the home for the "root" system user. There isn't anything more 
+to this folder other than just understanding that this is the home directory for the "root" user. 
+But, it is worth a mention as the logical presumption is that this user would have their data in a directory such 
+as "/home/root" by default.  
+
+/tmp (important folder for Pentesting)
+This is a unique root directory found on a Linux install. Short for "temporary", the /tmp directory is volatile 
+and is used to store data that is only needed to be accessed once or twice. Similar to the memory on your computer, 
+once the computer is restarted, the contents of this folder are cleared out.hat's useful for us in pentesting is 
+that any user can write to this folder by default. Meaning once we have access to a machine, Wit serves as a good place
+to store things like our enumeration scripts.
+
+Answer:/var/log,/tmp,/root
+
+7.Conclusions and Summaries
+8.Linux Fundamentals Part 3
