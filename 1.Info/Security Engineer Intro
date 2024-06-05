@@ -1,0 +1,61 @@
+1.Introduction
+
+2.What is a Security Engineer
+
+Summary of what a Security Engineer is.
+
+Answer:Security Engineer
+
+3.Core Responsibilities of a Security Engineer
+
+Create policies how the organization is run.
+
+This means that the security engineer takes steps to implement a Secure Network Architecture (room coming soon!), 
+ensures the organization's Windows, Linux, and Active Directory are hardened, and software development follows the 
+Secure Software Development Lifecycle.
+
+Conduct regular security assessments, audits, and red-teaming and purple-teaming exercises to continuously 
+improve the security posture. 
+
+Answer:Asset inventory,Exceptions,secure by design
+
+4.Continuous Improvement
+
+Ensuring Awarness
+In many companies people are unaware of the risks or get sloppy over time so its the job of the security engineer to
+ensure that the people are well trained.
+
+Managing Risk
+Sometimes it is not possible to upgrade a piece of software to the neweset version because it breaks the operation
+or the supplier or vendor have problems with it and so on.Then its the job of the security engineer to mitigate the possible 
+security problem with other ideas like hardening the system or put a proxy in front of a system so its not exposed directyl to the 
+internet or on other ways.This will reduce the threat of a security problem.
+
+Vulnerability Managment
+Keep track of the versions of software,keep track of new CVE,organazing patches of the systems and so on.
+
+Compliance and Audits
+Compliance standards such as PCI-DSS, HIPAA, SOC2, ISO27001, NIST-800-53, and more are maybe necessary depending on the 
+industry where the organization is working in.
+Working with internal and external auditors.
+
+Answer:Humans,Change Managment
+
+5.Additional Roles and Responsibilities
+
+Managing Security Tooling
+Keep track of the security tools like Firewalls,SIEMS,WAFs,EDRs and so on.
+
+Tabletop Excercices
+Excercise something in the organization like phising emails and so on.
+
+Disaster Recovery and Crisis Management
+Plan how to react and recover of incidents.
+
+Answer:Tabletop exercises,Business Continuity
+
+6.Walking in their Shoes
+
+Answer:THM{S3CUR1TY_3NG1N33R5_R0CK}
+
+7.Conclusion
