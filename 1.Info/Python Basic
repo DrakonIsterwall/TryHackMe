@@ -1,0 +1,113 @@
+1.Introduction
+Join Room and click on view site.
+Run the code.
+
+2.Hello World
+In every language the hello world is probably the first command you get to know and in python its pretty easy.This is for python3.
+print("Hello World)
+
+Answer:THM{PRINT_STATEMENTS}
+
+3.Mathematical Operators
+print(21+43)
+print(142-52)
+print(10*342)
+print(5**5)
+
+Answer:THM{ADDITI0N},THM{SUBTRCT},THM{MULTIPLICATION_PYTHON},THM{EXP0N3NT_POWER}
+
+4.Variables and Data Types
+height = 200
+height += 50
+print(height)
+
+Answer:THM{VARIABL3S}
+
+5.Logical and Boolean Operators
+
+Its about true and false comparison like in many languages with == or != or < or > or <= or >=
+
+6.Introduction to If Statements
+
+We have to follow the instruction in the view site shipping.py
+
+customer_basket_cost = 34
+customer_basket_weight = 44
+customer_shipping_cost = 0
+# Write if statement here to calculate the total cost
+if customer_basket_cost > 100:
+  customer_shipping_cost=0
+else:
+  customer_shipping_cost = customer_basket_weight *1.2
+
+total_basket_cost= customer_basket_cost + customer_shipping_cost
+print(total_basket_cost)
+
+Result is 86.8 and when we change the customer_basket_cost to 101 the result is 101
+
+Answers:THM{IF_STATEMENT_SHOPPING},THM{MY_FIRST_APP}
+
+7.Loops
+Print in a loop up to 50
+for x in range (51):
+  print(x)
+
+Answer:THM{L00PS_WHILE_FOR}
+
+8.Introductions to Functions
+
+This is the code that Tryhackme gave me after i had to think what they want from me.
+investment_in_bitcoin = 1.2
+bitcoin_to_usd = 40000
+
+# 1) write a function to calculate bitcoin to usd
+def bitcoinToUSD(bitcoin_amount,bitcoin_value_usd):
+  usd_value = bitcoin_amount*bitcoin_value_usd
+  return usd_value
+
+investment_in_usd = bitcoinToUSD(investment_in_bitcoin, bitcoin_to_usd)
+if investment_in_usd <= 30000:
+  print("Investment below $30,000! SELL!")
+else:
+  print("Investment above $30,000")
+
+The code i came up with and does the same in less code is this:
+
+investment_in_bitcoin = 0.7
+bitcoin_to_usd = 40000
+
+def bitcoin(investment_in_bitcoin,bitcoin_to_usd):
+    if investment_in_bitcoin*bitcoin_to_usd >=30000:
+       print("Your investment is over or equal to 30000")
+    else:
+       print("Your investment is under 30000")
+
+bitcoin(investment_in_bitcoin,bitcoin_to_usd)
+
+So you see there are more ways to the result but for the Answer/Flag use the way above else it doesnt work i guess because
+you have to call the function bitcoinToUSD.
+
+I already see that my own studying of python (my repo python_course) paid of in this case since i found a solution 
+on my own without the need of help.
+
+Answer:THM{BITC0IN_INVESTOR}
+
+9.Files
+
+You define a variable with the open command so you can open a file in this case with r so read only and then u print the 
+flag.txt. You can open a file with w and then use f.write("") and f.close() if u wanna write something into a file but then u 
+overwrite the file with with open and then a you append and add your text to the end of the existing file.
+
+f = open("flag.txt", "r")
+print(f.read())
+
+Answer:THM{F1LE_R3AD}
+
+10.Imports
+
+Many libraries are already built in into python but when u wanna add libraries you need to use pip.
+If pip is not already installed use the command below.
+apt install pip
+
+At the end of this room i probably would put this into Easy difficulty and not into Info in my opinion since it requires some
+training/practice when u have never done programming.But its doable.
