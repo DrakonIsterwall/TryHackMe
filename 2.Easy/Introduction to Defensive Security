@@ -1,0 +1,52 @@
+Second Room of Learning Path:Introduction to Cyber Security
+
+1.Introduction to Defensive Security
+
+Defensive security is somewhat the opposite of offensive security, as it is concerned with two main tasks:
+
+Preventing intrusions from occurring
+Detecting intrusions when they occur and responding properly
+In this room, we cover:
+
+Security Operations Center (SOC)
+Threat Intelligence
+Digital Forensics and Incident Response (DFIR)
+Malware Analysis
+
+Answer:Blue Team
+
+2.Areas of Defensive Security
+
+Read system logs,read network logs.Look if the file system had major changes like installed programs, created files, partially
+overwritten files, and deleted files.Check the System Memory/RAM if something is loaded in that looks suspicious.
+
+Learning about your adversaries(the guy who wanna hack our costumer) allows you to know their tactics, techniques, and procedures.
+As a result of threat intelligence, we identify the threat actor (adversary/they guy/guys that wanna hack our costumer), 
+predict their activity, and consequently,we will be able to mitigate their attacks and prepare a response strategy.
+
+The four major phases of the incident response process are:
+
+Preparation: This requires a team trained and ready to handle incidents. Ideally, various measures are put in place to prevent
+incidents from happening in the first place.
+
+Detection and Analysis: The team has the necessary resources to detect any incident; moreover, it is essential to further 
+analyze any detected incident to learn about its severity.
+
+Containment, Eradication, and Recovery: Once an incident is detected, it is crucial to stop it from affecting other systems, 
+eliminate it, and recover the affected systems. For instance, when we notice that a system is infected with a computer virus,
+we would like to stop (contain) the virus from spreading to other systems, clean (eradicate) the virus, and ensure proper
+system recovery.
+
+Post-Incident Activity: After successful recovery, a report is produced, and the learned lesson is shared to prevent 
+similar future incidents.
+
+Answer:Security Operations Center,Digital Forensics and Incident Response,ransomware
+
+3.Practical Example of Defensive Security
+
+Click on the View Site
+
+In this simple example you check logs of a SIEM system to see who is the intruder and then mail/inform the SOC Leader.
+He gives you the permission to add the IP to the firewall's block list.With this you blocked out the Intruder for now.
+
+Answer:THM{THREAT-BLOCKED}
