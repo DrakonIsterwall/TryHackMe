@@ -54,3 +54,126 @@ Try to use ssh connection to the machine because since i cant copy paste the cod
 
 Gonna continue on the next day(Day 5) and dont make the mistake like me closing the AttackBox while you are connected with ssh 
 because it closes the connection ... its late haha, mistakes happen and the next day i can try again ;)
+
+Day 7-8
+
+I started up again everything and have redone the previous steps with connecting over ssh.
+
+We create the conf file :
+
+sudo nano /etc/logrotate.d/98-websrv-02_sshd.conf
+
+Then the we add the content of the conf file:
+
+/var/log/websrv-02/rsyslog_sshd.log {
+    daily
+    rotate 30
+    compress
+    lastaction
+        DATE=$(date +"%Y-%m-%d")
+        echo "$(date)" >> "/var/log/websrv-02/hashes_"$DATE"_rsyslog_sshd.txt"
+        for i in $(seq 1 30); do
+            FILE="/var/log/websrv-02/rsyslog_sshd.log.$i.gz"
+            if [ -f "$FILE" ]; then
+                HASH=$(/usr/bin/sha256sum "$FILE" | awk '{ print $1 }')
+                echo "rsyslog_sshd.log.$i.gz "$HASH"" >> "/var/log/websrv-02/hashes_"$DATE"_rsyslog_sshd.txt"
+            fi
+        done
+        systemctl restart rsyslog
+    endscript
+}
+
+Save the file and then we excecute the following command:
+
+sudo logrotate -f /etc/logrotate.d/98-websrv-02_sshd.conf
+
+This activity aims to introduce logrotate, a tool that automates log file rotation, compression, and management, 
+ensuring that log files are handled systematically. It allows automatic rotation, compression, and removal of log files.
+
+Answer:24,hourly
+
+cat /etc/logrotate.d/99-websrv-02_cron.conf 
+
+Dont get confused like me that the answer should be 30 the config under /etc/logrotate.d/99-websrv-02_cron.conf is different 
+then the one we used before and it show this part 
+
+hourly
+rotate 24
+for i in $(seq 1 24); do
+
+This tells us its 24 rotations and its hourly.
+
+6.Hands-on Exercise: Log analysis process, tools, and techniques
+
+It can be done through various tools and techniques, ranging from complex systems like Splunk and ELK to ad-hoc methods
+ranging from default command-line tools to open-source tools. 
+
+We look into Data Sources of the log,how to pars the informations of the logs,trying to normalize them so its even more easier to
+read,sorting them how critical they are or if it is just an info,further classification,enrichment is adding more conext/infos to 
+the already sorted logs,correlation finds then connections between the logs and informations,now its time to visualize it in some
+form of chart or other style,the last is reporting that in best case has some informations for the departments that work with the 
+logs.
+
+Security Information and Event Management (SIEM) tools such as Splunk or Elastic Search can be used for complex log analysis tasks. 
+
+To filter we use the following commands in our terminal,:
+
+# Process nginx access log
+awk -F'[][]' '{print "[" $2 "]", "--- /var/log/gitlab/nginx/access.log ---", "\"" $0 "\""}' /var/log/gitlab/nginx/access.log  | sed "s/ +0000//g" > /tmp/parsed_consolidated.log
+
+# Process rsyslog_cron.log
+awk '{ original_line = $0; gsub(/ /, "/", $1); printf "[%s/%s/2023:%s] --- /var/log/websrv-02/rsyslog_cron.log --- \"%s\"\n", $2, $1, $3, original_line }' /var/log/websrv-02/rsyslog_cron.log >> /tmp/parsed_consolidated.log
+
+# Process rsyslog_sshd.log
+awk '{ original_line = $0; gsub(/ /, "/", $1); printf "[%s/%s/2023:%s] --- /var/log/websrv-02/rsyslog_sshd.log --- \"%s\"\n", $2, $1, $3, original_line }' /var/log/websrv-02/rsyslog_sshd.log >> /tmp/parsed_consolidated.log
+
+# Process gitlab-rails/api_json.log
+awk -F'"' '{timestamp = $4; converted = strftime("[%d/%b/%Y:%H:%M:%S]", mktime(substr(timestamp, 1, 4) " " substr(timestamp, 6, 2) " " substr(timestamp, 9, 2) " " substr(timestamp, 12, 2) " " substr(timestamp, 15, 2) " " substr(timestamp, 18, 2) " 0 0")); print converted, "--- /var/log/gitlab/gitlab-rails/api_json.log ---", "\""$0"\""}' /var/log/gitlab/gitlab-rails/api_json.log >> /tmp/parsed_consolidated.log
+
+Then sort:
+
+sort /tmp/parsed_consolidated.log > /tmp/sort_parsed_consolidated.log
+
+Remove duplicate entries:
+
+uniq /tmp/sort_parsed_consolidated.log > /tmp/uniq_sort_parsed_consolidated.log
+
+Watch the sorted log:
+
+http://10.10.146.235:8111/log?path=%2Ftmp%2Funiq_sort_parsed_consolidated.log
+or go into the tmp folder and you can see there the log file you created.
+
+Googled the answer no date field,no idea how to see that even the hint wasnt enough help for me.The link to where i got the answer.
+https://medium.com/@joseruizsec/soc-analyst-level-2-tryhackme-log-analysis-intro-to-logs-b7b2bfbc66b5
+Answer:no date field,normalisation,enrichment
+
+7.Conclusion
+
+Shows a lot more Rooms where we can improve our Blue Team Skills
+
+    Endpoint Detection and Response (EDR)
+        Intro to Endpoint Security
+        Aurora EDR
+        Wazuh
+
+    Intrusion Detection and Prevention Systems (IDPS)
+        Snort
+        Snort Challenge - The Basics
+        Snort Challenge - Live Attacks
+
+    Security Information and Event Management (SIEM)
+        Investigating with ELK 101
+        Splunk: Basics
+        Incident handling with Splunk
+
+Well this room was the first one i would say is more complicated since you use a lot of commands that are not explained in full and
+they want that you use a lot of filter commands. I would recommend look up the commands awk,sed,sort,uniq.
+
+Has some good examples so i did understand better how it works
+https://www.geeksforgeeks.org/awk-command-unixlinux-examples/
+https://www.geeksforgeeks.org/sort-command-linuxunix-examples/ 
+https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/
+https://www.geeksforgeeks.org/uniq-command-in-linux-with-examples/
+
+Unless you gonna deep dive on the examples and make some yourself i guess we gonna have a basic understanding but nothin crazy 
+for the beginning.
