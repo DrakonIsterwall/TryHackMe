@@ -1,0 +1,21 @@
+First Room of Learning Path:Introduction to Cyber Security
+
+1.What is Offensive Security?
+
+In short, offensive security is the process of breaking into computer systems, exploiting software bugs, and 
+finding loopholes in applications to gain unauthorized access to them.
+
+Since we wanna be an Ethical Hacker we still need to know how the bad guys do all the hacking stuff else we cant do something
+against it.
+
+Answer:Offensive Security
+
+2.Hacking your first machine
+
+Start the machine and use the split view and follow the gobuster command to see which pages/direcotries are found
+
+Answer:BANK-HACKED
+
+3.Careers in cyber security
+
+There are a lot of different career options and in this example we have the Penetration Tester,Red Teamer and Security Engineer.
