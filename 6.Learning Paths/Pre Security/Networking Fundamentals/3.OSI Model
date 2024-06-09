@@ -1,1 +1,83 @@
+1.What is the OSI Model? 
 
+OSI = Open Systems Interconnection Model
+
+I guess everyone that has learned about IT stuff has heared of OSI and probably the TCP/IP Models.
+IT is a Model used in networking to explain the fundamentals how data is send,received and how to interpret(understand) the data.
+
+Answers:Open Systems Interconnection Model,7,encapsulation
+
+2.Layer 7 - Application
+
+Good examples so you can understand what the Application Layer is about.
+Everyday applications such as email clients, browsers, or file server browsing software such as FileZilla provide a friendly, 
+Graphical User Interface (GUI) for users to interact with data sent or received. Other protocols include DNS (Domain Name System), 
+which is how website addresses are translated into IP addresses.
+
+Answers:Application,Graphical User Interface
+
+3.Layer 6 - Presentation
+
+This layer translates data to the lowest common form so if it is send the remote pc with maybe a similiar application still 
+can use the data.
+
+Good example are emails:
+For example, when you send an email, the other user may have another email client to you, but the contents of the email will 
+still need to display the same.
+
+4.Layer 5 - Session
+
+The session layer (layer 5) synchronises the two computers to ensure that they are on the same page before data is sent and 
+received. Once these checks are in place, the session layer will begin to divide up the data sent into smaller chunks of data 
+and begin to send these chunks (packets) one at a time. This dividing up is beneficial because if the connection is lost, only 
+the chunks that weren't yet sent will have to be sent again — not the entire piece of the data (think of it as loading a save 
+file in a video game).
+
+Answers:Session,Session,Packets
+
+5.Layer 4 - Transport
+
+Here we read about TCP and UDP.
+
+Transmission Control Protocol (TCP). Potentially hinted by the name, this protocol is designed with reliability and guarantee 
+in mind. This protocol reserves a constant connection between the two devices for the amount of time it takes for the data to be 
+sent and received.Not only this, but TCP incorporates error checking into its design. Error checking is how TCP can guarantee that 
+data sent from the small chunks in the session layer (layer 5) has then been received and reassembled in the same order.
+TCP is used when we need a reliable connection and cant have some missed data.
+
+UDP is the opposite there is no synchronization before data is sent,no error checking if all packets arrived,can be unstable depending
+which way it takes to the receiver.The adavantages are that it is a lot faster and doesnt reserve a connection on the receiving end
+and doesnt neeed to have a build up connection constantly.
+
+Its used for streaming or voice over ip (internet protocol) and lot of stuff where it is not important that 100% of the data arrives.
+
+Answers:Transport,Transmission Control Protocol,User Datagram Protocol,TCP,UDP,TCP,TCP,UDP
+
+6.Layer 3 - Network
+
+Answers:Network,Y,Open Shortest Path First,Routing Information Protocol,IP Adresses
+
+7.Layer 2 - Data Link
+
+The data link layer focuses on the physical addressing of the transmission. It receives a packet from the network layer 
+(including the IP address for the remote computer) and adds in the physical MAC (Media Access Control) address of the receiving
+endpoint. Inside every network-enabled computer is a Network Interface Card (NIC) which comes with a unique MAC address to 
+identify it.
+
+Answers:Data Link,Network Interface Card
+
+8.Layer 1 - Physical
+
+Well this is the physical layer,its all about cables and the hardware components needed to connect in networking.
+
+Answers:Physical,Binary,Ethernet Cables
+
+9.Practical - OSI Game
+
+Play the game and get the correct order of the OSI Model
+
+Answers:THM{OSI_DUNGEON_ESCAPED}
+
+10.Continue Your Learning: Packets & Frames
+
+Next Room lets go :)
