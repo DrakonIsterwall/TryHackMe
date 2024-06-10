@@ -1,1 +1,46 @@
-Soon...
+1.Putting it all together
+
+2.Other Components
+
+Load Balancing in this example with round-robin, it checks which of the servers has the least work and send the request then there.
+Load Balancers can check on the performance/health of the servers periodically.
+
+CDN (Content Delivery Networks) are like websites that are static and give out different locations/torrents or similiar 
+where you can download as example some software.Then you choose the nearest server and it can start downloading or it starts
+automatically and chooses the closest server for you.
+
+Databases are storing tons of informations and can have often a high value for hackers because of informations about the customers.
+
+WAF (Web Application Firewall) 
+A WAF sits between your web request and the web server; its primary purpose is to protect the webserver from hacking or 
+denial of service attacks. It analyses the web requests for common attack techniques, whether the request is from a real 
+browser rather than a bot. It also checks if an excessive amount of web requests are being sent by utilising something called
+rate limiting, which will only allow a certain amount of requests from an IP per second. If a request is deemed a potential attack,
+it will be dropped and never sent to the webserver.
+
+Answer:CDN,health check,WAF
+
+3.How Web Servers Work
+
+Most common server software for wbesites are Apache, Nginx, IIS and NodeJS.
+
+Static and Dynamic Content of Websites
+Static content, as the name suggests, is content that never changes. Common examples of this are pictures, javascript, CSS, etc., 
+but can also include HTML that never changes. Furthermore, these are files that are directly served from the webserver with 
+no changes made to them.
+
+Dynamic content, on the other hand, is content that could change with different requests. Take, for example, a blog. 
+On the homepage of the blog, it will show you the latest entries. If a new entry is created, the home page is then updated 
+with the latest entry, or a second example might be a search page on a blog. Depending on what word you search, 
+different results will be displayed.
+
+Virtual Hosts can make managing of multiple websites easier.
+
+Answer:virtual host,dynamic,NAY
+
+4.Quiz
+
+Play the Quiz ,click view site. Get the correct order.With all the new knowledge you should be able to know how a connection
+from your pc to the router to the webserver and back happens.
+
+Answer:
