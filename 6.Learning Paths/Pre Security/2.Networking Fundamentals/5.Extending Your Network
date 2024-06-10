@@ -1,1 +1,50 @@
-1
+1.Introduction to Port Forwarding
+
+Port forwarding is an essential component in connecting applications and services to the Internet. Without port forwarding, 
+applications and services such as web servers are only available to devices within the same direct network.
+Port forwarding is configured at the router of a network.
+
+Answer:Router
+
+2.Firewalls 101
+
+The Firewall is handling the incoming and outgoing traffic if it is permitted or denied.Many firewalls regulate incoming traffic 
+pretty good but outgoing traffic is often not regulated a lot and thats when reverse shell connections can get a connection into
+your system.
+Network and Transport Layer on the OSI Model.
+
+Answer:Layer 3,Layer 4,Stateful,Stateless
+
+3.Practical - Firewall
+
+Play the practical game.A website gets attacked so as we already learned its a the port 80.
+
+Answer:THM{FIREWALLS_RULE}
+
+4.VPN Basics
+
+A Virtual Private Network (or VPN for short) is a technology that allows devices on separate networks to communicate securely 
+by creating a dedicated path between each other over the Internet (known as a tunnel). Devices connected within this tunnel form 
+their own private network.
+
+Allows networks in different geographical locations to be connected.Offer Privacy and anonymity.
+
+PPP (Point to Point Protocol) works with a public and private key that must match and CANT leave the network by itself(non-routable)
+PPTP (Point to Point Tunneling Protocol) is adding the tunneling, its easy to set up but has a weak encryption.
+IPSec adds all this but instead has a strong encryption.
+
+Answer:PPP,IPSec
+
+5.LAN Networking Devices
+
+VLAN's seperate LAN's virtually.You can seperate as example a Sales Team,Research Team,HQ Team into different VLAN's so it looks
+like the are on totally seperated networks but still handled by one layer 3 switch.
+
+Answer:Routing,Layer2,Layer3
+
+6.Practical - Network Simulator
+
+Play/Practice on the View Site and get the flags.
+Send a TCP Pakcet from computer1 to computer3 then wait for the flag.Count the Handshakes.
+
+Answer:THM{YOU'VE_GOT_DATA},5
