@@ -1,1 +1,36 @@
-Soon...
+1.How websites work
+
+Explaining difference between front end and back end:
+
+Front End (Client-Side) - the way your browser renders a website. (How the website gonna look with html,css,javascript and more )
+Back End (Server-Side) - a server that processes your request and returns a response.( How the technical stuff in the background
+of the website gonna be processed like databases/sql,forms,php and much more.)
+
+Answer:Front End
+
+2.HTML
+
+Some basic HTML knowledge can help but nothing to complicated asked here just add .jpg by the cat-2 and add the line 11 
+with dog-1.png
+
+Answer:HTMLHERO,DOGHTML
+
+3.JavaScript
+
+Change : Hi there! 
+to : Hack the Planet
+
+Answer:JSISFUN
+
+4.Sensitive Data Exposure
+
+Very simple read source code of the webpage sometimes it can reveal more info then you think.Probably never this easy but who knows
+on a default page config anything can happen.
+
+Answer:testpasswd
+
+5.HTML Injection
+
+ <a href="http://hacker.com">Hacked</a></p>
+
+Answer:HTML_INJ3CTI0N
