@@ -1,1 +1,54 @@
-1.
+1.What are Packets and Frames
+
+Checksum:Checking the integrity of the packets
+TTL=Time to live for a packet else the packet would wonder around in the internet for ever and clog it up
+Source Address: The IP address of the device that the packet is being sent from so that data knows where to return to.
+Destination Address: The device's IP address the packet is being sent to so that data knows where to travel next.
+
+Answer:Packet,Frame
+
+2.TCP/IP (The Three-Way Handshake)
+
+Source Port:This value is the port opened by the sender to send the TCP packet from. This value is chosen randomly 
+            (out of the ports from 0-65535 that aren't already in use at the time).
+Destination Port:This value is the port number that an application or service is running on the remote host 
+                 (the one receiving data); for example, a webserver running on port 80. Unlike the source port, 
+                 this value is not chosen at random.
+Sequence Number:When a connection occurs, the first piece of data transmitted is given a random number.
+Acknowledgement Number:After a piece of data has been given a sequence number, the number for the next piece of data 
+                       will have the sequence number + 1. 
+Data:This is the header is where the data is.
+Flag: his header determines how the packet should be handled by either device during the handshake process. Specific flags 
+      will determine specific behaviours, which is what we'll come on to explain below.
+
+The Three-way handshake is SYN,SYN/ACK,ACK.
+SYN message is used to initiate a connection to synchronize the 2 devices.The SYN/ACK message This packet is sent by the 
+receiving device (server) to acknowledge the synchronisation attempt from the client.In the ACK message the connection get then 
+acknowledged.
+
+Answer:Checksum,SYN,SYN/ACK,ACK
+
+3.Practical - Handshake
+
+Play the game and get the correct order.
+
+Answer:THM{TCP_CHATTER}
+
+4.UDP/IP
+
+Request a stream like as example twitch and then it gonna start streaming (responding) to you.
+We should recall that UDP is stateless. No acknowledgement is sent during a connection.
+
+Answer:User Datagram Protocol,stateless,TCP,UDP
+
+5.Ports 101 (Practical)
+
+Ports go from 0 - 65535 and the 0-1024 are the common ports and the most known are probably :
+
+FTP 21,SSH 22,HTTP 80,HTTPS 443,SMB(Server Message Block) 445,RDP(Remote Desktop Protocol) 3389
+
+Answer:THM{YOU_CONNECTED_TO_A_PORT}
+
+6.Continue Your Learning: Extending Your Network
+
+Terminate the static site views and continue with the Extending Your Network Room.
