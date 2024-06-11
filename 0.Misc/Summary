@@ -3,31 +3,31 @@ Hello everyone, here i gonna summarize which day i have done which room and how 
 In the first days i gonna try to improve on some Fundamentals.I already done some more rooms in the past but gonna redo them 
 and add them in order here.
 
-Day 1
+Day 0
 OpenVPN : Difficulty : Easy 
 Principles of Security : Difficulty : Info
 
-Day 2 
+Day 1 
 Sudo Security Bypass : Difficulty : Info
 Linux Fundamentals Part 1 : Difficulty Info
 
-Day 3
+Day 2
 Linux Fundamentals Part 2 : Difficulty Info
 Security Engineer Intro : Difficulty Info
 
-Day 4
+Day 3
 Linux Fundamentals Part 3 : Difficulty Info
 Python Basic : Difficulty Info
 Intro to Logs : Difficulty Easy (Till Task 5)
 
-Day 5 
+Day 4 
 Intro to Logs : Difficulty Easy (to be continued)
 
-Day 6
+Day 5
 
 Little break just answered one question to keep the Streak going
 
-Day 7-8
+Day 6
 Intro to Offensive Security : Difficulty Info
 Introduction to Defensive Security : Difficulty Easy
 Intro to Logs : Difficulty Easy (finally done)
@@ -36,10 +36,13 @@ OSI Model : DIfficulty Info
 I added the folder Learning Paths and gonna add in future there the Learning Paths so the Rooms are more categorized,
 for the beginning i added : Introduction to Cyber Security and Pre Security
 
-Day 8-9
+Day 7
 Packets&Frames : Difficulty Info
 Extending Your Network: Difficulty Info
 How Websites Work : Difficulty Easy
 Putting it all together : Difficulty Easy
 
 Added a new Learning Path : Complete Beginner
+
+Day 8
+Network Services : Difficulty Easy
