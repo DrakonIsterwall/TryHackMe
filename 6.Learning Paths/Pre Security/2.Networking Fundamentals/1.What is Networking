@@ -1,1 +1,32 @@
-Soon...
+1.What is Networking?
+
+The world has a lot of different networks.A good example are streets and navigation systems because its a big network that delivers 
+stuff all around the world or you can even be a part of this network with yourself.The same can happen with you connecting to the
+Internet is a big network where you send packets to a system and you can even join the journey when you get into a system like
+for example when u connect to the company network from home.
+
+Answer:Network
+
+2.What is the Internet
+
+The basic idea of a connecting network in the IT World goes back to the late 1960's and was used int the United States Defence
+Departments.In 1989 the Internet was invented by Tim Berners-Lee by the creation of the World Wide Web (WWW).
+There are public and private networks.
+
+Answer:Tim Berners-Lee
+
+3.Identifying Devices on a Network
+
+Click View Site and go through the websites.Learn the basics how a IP Address is constructed,what a MAC is,IPv4 ,IPv6.
+
+Answers:Internet Protocol,Octet,4,Media Access Control,THM{YOU_GOT_ON_TRYHACKME}
+
+4.Ping(ICMP)
+
+Click View Site and get through the tasks.
+
+Answer:ICMP,10.10.10.10,THM{I_PINGED_THE_SERVER}
+
+5.Continue Your Learning:Intro to LAN
+
+
