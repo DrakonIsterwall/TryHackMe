@@ -1,1 +1,51 @@
-Soon...
+1.Introduction
+
+The idea of this room is to get to know that you have to research a lot of stuff in this field and that you cant know everything.
+
+We will be looking at the following topics:
+• An example of a research question
+• Vulnerability Searching tools
+• Linux Manual Pages
+
+2.Example Research Question
+
+Read the examples and try to get some ideas how you can search for solutions to your questions.
+When you are already working long in the field you probably have your search routines like when you work in the sales department,
+then you know where to get to know new costumers, maybe on new events or after partys or some seminars or similiar stuff.
+In the field of buying hardware you maybe found out how to optimize your search engine to find the best deals and so on.
+
+Here we try to open our mind and think how we can approach a problem or when we see something new like in the example you see a 
+website when you are doing a CTF or you found out with nmap that they using an old version of an apache service , can i maybe find an 
+exploit that i can use that on ?Its like collecting informations on different subjects and then use a filter (maybe programmed,maybe 
+your own experience) the informations to find a solution. After some time you can revaluate your searches and look if u maybe can find
+like more efficient ways to search like as example google dorking to get a refined search.
+
+Answer:Repeat,NTLM,Cron Jobs,Base 16,sha512crypt
+
+3.Vulnerabilty Researching
+
+look for vulnerabilitys with searchsploit for example ( or use the website ExploitDatabase)
+searchsploit fuel cms
+
+Answers:CVE-2020-10385,CVE-2016-1240,CVE-2007-0017,CVE-2019-18634
+
+4.Manual Pages
+
+Manual Pages are great to explain a lot of tools. We had this topic already in the Linux Fundamental Rooms and it is pretty important,
+because you always gonna find some new tools that you maybe dont understand full and you want some in depth information.
+
+we had examples like man ssh,man nmap,man ls,man scp and so on. Some man pages are written well like on the well known basic tools and on some
+lets say experimental tool it can happen that we dont have a man page.
+
+Answer:-r,-l,-B,nc -l -p 12345
+
+5.Final Thoughts
+
+They recommend the next room that is google dorking. When you are looking up informations in general like if someone tells you the 
+earth is flat ( just an example and yes the earth is round , believe me i know it i worked in enough fields in my live that i can
+swear on it, so dont believe some crazy people :D, but back to topic now) and then you wanna prove for yourself if it is really flat
+or round (its round) then you gonna google and you gonna see some people say yes its flat and some people say its round, so you have
+controversial informations(its round). In our field we have a lot of security researchers,black hats,white hats,grey hats and many 
+more that are having blogs or explaining software and mostly people dont make the effort in this field to spread missinformation
+because it has not much benefit to them unless they trolling hard.
+
