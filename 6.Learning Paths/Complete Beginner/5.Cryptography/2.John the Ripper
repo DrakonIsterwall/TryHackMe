@@ -1,1 +1,24 @@
-Soon...
+1.John who?
+2.Setting up John the Ripper
+
+Update your Kali,Parrot or install John the Ripper
+
+Answer: Jumbo John
+
+3.Wordlists
+
+Get lists from this link https://github.com/danielmiessler/SecLists
+
+Answer:rockyou.com
+
+4.Cracking Basic Hashes
+
+Identify hashes 
+https://hashes.com/en/tools/hash_identifier
+
+john --format=[format] --wordlist=[path to wordlist] [path to file]
+
+for the first three hashes --format=raw-
+
+
+Answer:md5,biscuit,sha1,kangeroo,sha256,microphone,whirlpool,colossal
