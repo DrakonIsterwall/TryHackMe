@@ -57,3 +57,54 @@ john --wordlist=/usr/share/wordlists/rockyou.txt --format=sha512crypt unshadowed
 Answer:1234
 
 7.Single Crack Mode
+
+add Joker with : to the downloaded file and identify the hash 
+the hash type is md5 and then use --format=-raw-md5
+
+Answer:Jok3r
+
+8.Costum Rules
+
+I kinda understand the idea but its the syntax that you probably have to read couple times to use properly then.
+
+Had to lookup the Az"[A-Z]" because i did not understand it properly but after i knew the answer i understood it.
+Az appends the "[A-Z]" (in this case all upper letters) to the end of the word.
+
+I looked it up in that link:
+https://hacklido.com/blog/522-tryhackme-john-the-ripper-writeup
+
+Answer:password complexity predictability,Az"[A-Z]",--rule=THMRules
+
+9.Cracking Password Protected Zip Files
+
+Download teh zip file
+
+zip2john filename.zip > file_hash.txt
+
+john --wordlist=/path/to/rockyou.txt file_hash.txt
+
+Answer:pass123,THM{w3ll_d0n3_h4sh_r0y4l}
+
+10.Cracking Password Protected RAR Archives
+
+The same syntax just the command is rar2john
+
+the rar file wont open by me so i cant get the flag i looked it up on the same site:
+https://hacklido.com/blog/522-tryhackme-john-the-ripper-writeup
+
+Learned that i can use the unrar command to unpack the rar and get the flag
+unrar e secure.rar
+Then i type in the password i found and save the flag.txt somewhere.
+
+Answer:password,THM{r4r_4rch1ve5_th15_t1m3}
+
+11.Cracking SSH Keys with John 
+
+ss2john id_rsa > id_rsahash.txt
+john --wordlist=/path/to/rockyou.txt id_rsahash.txt
+
+12.Further Reading
+
+It is a diverse tool that can crack a lot of different passwords/hashes and it would probably be smart to create or look for a 
+cheatsheet.
+More infos about john on https://www.openwall.com/john/
