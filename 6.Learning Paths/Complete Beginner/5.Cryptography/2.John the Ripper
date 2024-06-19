@@ -41,3 +41,19 @@ change to format=nt
 Answer:nt,mushroom
 
 6.Cracking /etc/shadow Hashes
+
+Download the etc_hashes
+
+unshadow [path to passwd] [path to shadow]
+
+unshadow - Invokes the unshadow tool
+
+[path to passwd] - The file that contains the copy of the /etc/passwd file you've taken from the target machine
+
+[path to shadow] - The file that contains the copy of the /etc/shadow file you've taken from the target machine 
+
+john --wordlist=/usr/share/wordlists/rockyou.txt --format=sha512crypt unshadowed.txt
+
+Answer:1234
+
+7.Single Crack Mode
