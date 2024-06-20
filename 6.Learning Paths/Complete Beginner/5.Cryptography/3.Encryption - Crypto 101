@@ -1,1 +1,89 @@
-Soon...
+1.What will this room cover?
+
+
+
+2.Key Terms
+
+Read the terms to understand what terminology is used. 
+
+Passphrase - Separate to the key, a passphrase is similar to a password and used to protect a key.
+Well i googled difference of passphrase and password and didnt see such a big difference, maybe i dont find the proper article.
+For me its the same do be honest.
+
+Answer:passphrase
+
+3.Why is Encryption important?
+
+Certificates help to prove the identity of a website as example.
+There are different compliance standards for banks,consumer websites and much more in this case we take a closer look on PCI-DSS.
+
+Answer:Secure Shell,Certificate,PCI-DSS
+
+4.Crucial Crypto Maths
+
+Use a Python Script or google to get the values calculated.
+
+In computing, the modulo operation returns the remainder or signed remainder of a division, after one number is divided 
+by another (called the modulus of the operation).
+
+Answer:0,4,3565
+
+5.Types of Encryption
+
+DES has only 56 bits and is NOT considered secure.Triple DES has 112 or 168 and uses the cipher 3 times (thats why its called triple
+Des). The succesor is AES.
+
+Answer:Nay,Triple DES,Yea
+
+6.RSA - Rivest Shamir Adleman
+
+Its the asymetrical cryptography like using huge numbers to achieve huge factors.
+The security of RSA relies on the practical difficulty of factoring the product of two large prime numbers, 
+the "factoring problem". Breaking RSA encryption is known as the RSA problem. Whether it is as difficult as the factoring 
+problem is an open question.[3] There are no published methods to defeat the system if a large enough key is used.
+
+Answer:29239669
+
+7.Establishing Keys Using Asymmetric Cryptography
+
+Get a basic understanding of HTTPS for example.
+https://robertheaton.com/2014/03/27/how-does-https-actually-work/
+
+8.Digital signatures and Certificates
+
+You can get your own HTTPS certificates for domains you own using Let’s Encrypt for free. If you run a website, 
+it’s worth setting it up.
+
+Look up the Cert of Tryhackme.
+
+Answer:E1
+
+9.SSH Authentication
+
+Download the files
+
+How do I use these keys?
+
+The ~/.ssh folder is the default place to store these keys for OpenSSH. The authorized_keys (note the US English spelling) file 
+in this directory holds public keys that are allowed to access the server if key authentication is enabled. By default on many 
+distros, key authentication is enabled as it is more secure than using a password to authenticate. Normally for the root user, 
+only key authentication is enabled.
+
+In order to use a private SSH key, the permissions must be set up correctly otherwise your SSH client will ignore the file with 
+a warning. Only the owner should be able to read or write to the private key (600 or stricter). ssh -i keyNameGoesHere user@host
+is how you specify a key for the standard Linux OpenSSH client.Using SSH keys to get a better shell
+<b>
+SSH keys are an excellent way to “upgrade” a reverse shell, assuming the user has login enabled (www-data normally does not,
+but regular users and root will). Leaving an SSH key in authorized_keys on a box can be a useful backdoor, and you don't need to
+deal with any of the issues of unstabilised reverse shells like Control-C or lack of tab completion.</b>
+
+
+10.Explaining Diffie Hellman Key Exchange
+
+
+
+11.PGP, GPG and AES
+
+Download the files
+
+12.The Future - Quantum Computers and Encryption
