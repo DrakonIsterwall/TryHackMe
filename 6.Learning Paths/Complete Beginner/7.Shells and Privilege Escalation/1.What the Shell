@@ -1,1 +1,55 @@
-Soon...
+1.What is a shell?
+2.Tools
+
+
+https://github.com/swisskyrepo/PayloadsAllTheThings
+https://web.archive.org/web/20200901140719/http://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet
+https://github.com/danielmiessler/SecLists
+
+3.Types of Shell
+
+Reverse shells are when the target is forced to execute code that connects back to your computer. On your own computer you would 
+use one of the tools mentioned in the previous task to set up a listener which would be used to receive the connection. Reverse 
+shells are a good way to bypass firewall rules that may prevent you from connecting to arbitrary ports on the target; however,
+the drawback is that, when receiving a shell from a machine across the internet, you would need to configure your own network to 
+accept the shell. This, however, will not be a problem on the TryHackMe network due to the method by which we connect into the 
+network.
+
+Bind shells are when the code executed on the target is used to start a listener attached to a shell directly on the target. 
+This would then be opened up to the internet, meaning you can connect to the port that the code has opened and obtain remote code
+execution that way. This has the advantage of not requiring any configuration on your own network, but may be prevented by 
+firewalls protecting the target.
+
+Answer:R,N,T
+
+4.Netcat
+
+    -l is used to tell netcat that this will be a listener
+    -v is used to request a verbose output
+    -n tells netcat not to resolve host names or use DNS. Explaining this is outwith the scope of the room.
+    -p indicates that the port specification will follow.
+
+The example in the previous task used port 443. Realistically you could use any port you like, as long as there isn't already a 
+service using it. 
+Be aware that if you choose to use a port below 1024, you will need to use sudo when starting your listener. That said, it's often
+a good idea to use a well-known port number (80, 443 or 53 being good choices) as this is more likely to get past outbound 
+firewall rules on the target.
+
+Answer:-l,nc 10.10.10.11 8080
+
+5.Netcat Shell Stabilisation
+
+Have to write a script or look how to add it properly in my routine or try socat in future.
+
+Answer:stty cols 238,sudo python3 -m http.server 80
+
+6.Socat 
+7.Socat Encrypted Shells
+8.Common Shell Payloads
+9.msfvenom
+10.Metasploit multi/handler
+11.WebShells
+12.Next Steps
+13.Practice and Examples
+14.Linux Practice Box
+15.Windows Practice Box
