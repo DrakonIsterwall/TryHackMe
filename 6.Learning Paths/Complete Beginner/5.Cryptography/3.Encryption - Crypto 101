@@ -1,6 +1,6 @@
 1.What will this room cover?
 
-
+A lot and much is theoretical.
 
 2.Key Terms
 
@@ -72,18 +72,36 @@ only key authentication is enabled.
 In order to use a private SSH key, the permissions must be set up correctly otherwise your SSH client will ignore the file with 
 a warning. Only the owner should be able to read or write to the private key (600 or stricter). ssh -i keyNameGoesHere user@host
 is how you specify a key for the standard Linux OpenSSH client.Using SSH keys to get a better shell
-<b>
+
 SSH keys are an excellent way to “upgrade” a reverse shell, assuming the user has login enabled (www-data normally does not,
 but regular users and root will). Leaving an SSH key in authorized_keys on a box can be a useful backdoor, and you don't need to
-deal with any of the issues of unstabilised reverse shells like Control-C or lack of tab completion.</b>
+deal with any of the issues of unstabilised reverse shells like Control-C or lack of tab completion.
 
+ssh2john /path/of/downloaded/id_rsa > id_rsahash.txt
+
+john --wordlist=/path/to/wordlist /path/to/id_rsahash.txt
+
+Answer:RSA,delicious
 
 10.Explaining Diffie Hellman Key Exchange
 
-
+Look the video :   https://www.youtube.com/watch?v=NmM9HA2MQGI
 
 11.PGP, GPG and AES
 
 Download the files
 
+Explain Video for AES
+https://www.youtube.com/watch?v=O4xNJsjtN6E
+
+Google how decrypting with gpg works
+
+gpg --import tryhackme.key
+gpg --output /path/to/output.txt --decrypt /path/of/gpgfile
+
+Answer:pineapple
+
 12.The Future - Quantum Computers and Encryption
+
+I would say the room was easy and not even close to medium but in total the topic can get really complicated but some understanding
+of it can help a lot int CyberSec.
