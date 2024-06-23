@@ -1,1 +1,30 @@
-Soon...
+1.What is HTTP(S)?
+
+HTTPS is the secure version of HTTP. HTTPS data is encrypted so it not only stops people from seeing the data you are receiving and sending, but it also gives you assurances that you're talking to the correct
+web server and not something impersonating it.
+
+Answer:HyperText Transfer Protocol,secure,THM{INVALID_HTTP_CERT}
+
+2.Request And Responses
+
+Answer:HTTP/1.1,Content-Length
+
+3.HTTP Methods
+
+Answer:POST,PUT,DELETE,GET
+
+4.HTTP Status Codes
+
+Answer:201,404,503,401
+
+5.Headers
+
+Answer:User-Agent,Content-Type,Host
+
+6.Cookies
+
+Answer:Set-Cookie
+
+7.Making Requests
+
+Answer:THM{YOU'RE_IN_THE_ROOM},THM{YOU_FOUND_THE_BLOG},THM{USER_IS_DELETED},THM{USER_HAS_UPDATED},THM{HTTP_REQUEST_MASTER}
