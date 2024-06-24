@@ -1,0 +1,134 @@
+1.Introduction
+
+Do the Room "Introductory Networking" to get some basic knowledge before you try Wireshark 101.
+
+2.Installation
+
+We use Kali Linux then we know its already installed else google some guid how to install wireshark on your Linux Distro.
+
+3.Wireshark Overview
+
+Explaining us the interface and filters we can choose.In our "learning" we propably gonna take tun0 for the OPENVPN connection
+that we have stablished with the Tryhackme network.
+
+
+
+4.Collection Methods
+
+We get explained some methods how to tap into some connections like a vampire tap or Throwing Star LAN Tap.There are probably more
+methods to get into some connections that we gonna learn some day.
+
+MAC Floods
+
+MAC Floods are a tactic commonly used by red teams as a way of actively sniffing packets. MAC Flooding is intended to stress the 
+switch and fill the CAM table. Once the CAM table is filled the switch will no longer accept new MAC addresses and so in order to 
+keep the network alive, the switch will send out packets to all ports of the switch.
+Note: This technique should be used with extreme caution and with explicit prior consent.
+
+ARP Poisoning
+
+ARP Poisoning is another technique used by red teams to actively sniff packets. By ARP Poisoning you can redirect the traffic from 
+the host(s) to the machine you're monitoring from. This technique will not stress network equipment like MAC Flooding however 
+should still be used with caution and only if other techniques like network taps are unavailable.
+
+Sounds interesting lets see how much we learn here.
+
+
+
+5.Filtering Captures
+
+Wireshark's filter syntax can be simple to understand making it easy to get a hold of quickly. To get the most out of these 
+filters you need to have a basic understanding of boolean and logic operators.
+
+Wireshark only has a few that you will need to be familiar with:
+
+    and - operator: and / &&
+    or - operator: or / ||
+    equals - operator: eq / ==
+    not equal - operator: ne / !=
+    greater than - operator: gt /  >
+    less than - operator: lt / <
+
+Mostly the same like in Python or other programming languages that use boolean and logic operators if u are not familiar with them.
+Try to to look it up in a python course. 
+
+If we ever gonna go crazy on the filter system in Wireshark we can look it up here. 
+https://www.wireshark.org/docs/wsug_html_chunked/ChWorkBuildDisplayFilterSection.html
+https://www.wireshark.org/learn
+
+With the following filter we can search for a specific IP (here the equal operator ==)
+ip.addr == <IP Address>
+
+Filtering by SRC and DST: The second filter will look at is two in one as well as a filter operator: ip.src and ip.dst. 
+These filters allow us to filter the traffic by the source and destination from which the traffic is coming from.
+
+ip.src == <SRC IP Address> and ip.dst == <DST IP Address>
+
+Filtering by TCP Protocols: The last filter that we will be covering is the protocol filter, this allows you to set a 
+port or protocol to filter by and can be handy when trying to keep track of an unusual protocol or port being used.
+
+tcp.port eq <Port #> or <Protocol Name>
+
+Same goes for UDP
+
+udp.port eq <Port #> or <Protocol Name>
+
+
+6.Packet Dissection
+
+Welcome back to OSI, here they already expect that you have a basic understanding of the OSI Model if not try to google and refresh
+your knowledge.
+
+Frame (Layer 1) -- This will show you what frame / packet you are looking at as well as details specific to the Physical layer 
+of the OSI model.
+Source [MAC] (Layer 2) -- This will show you the source and destination MAC Addresses; from the Data Link layer of the OSI model.
+Source [IP] (Layer 3) -- This will show you the source and destination IPv4 Addresses; from the Network layer of the OSI model.
+Protocol (Layer 4) -- This will show you details of the protocol used (UDP/TCP) along with source and destination ports; from the 
+Transport layer of the OSI model.
+Application Protocol (Layer 5) -- This will show details specific to the protocol being used such HTTP, FTP, SMB, etc. From the 
+Application layer of the OSI model.
+
+Look it up in the room under task 6 if u want to see pictures for better understanding.
+
+7.ARP Traffic
+
+Download the pcap file and open it in Wireshark.
+Filter for arp and look for packet 6 and go on the Adress Resolution Protocol and look up the Opcode.
+
+Look up packet 19 go on the Ethernet II and look up the Souce MAC.
+
+
+
+Answer:Request (1),80:fb:06:f0:45:d7
+This is the answer for which packets have a reply Opcode so copy it with the ,
+Answer:76,400,459,520
+Last Answer with the IP you have to look for the Broadcast
+Answer:10.251.23.1
+
+8.ICMP Traffic
+
+
+
+9.TCP Traffic
+
+
+
+10.DNS Traffic
+
+
+
+11.HTTP Traffic
+
+
+
+12.HTTPS Traffic
+
+
+
+13.Analyzing Exploit PCAPs
+
+
+
+14.Conclusion
+
+
