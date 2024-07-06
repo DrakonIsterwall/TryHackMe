@@ -41,3 +41,6 @@ Sequencer: Sequencer is typically employed when assessing the randomness of toke
 supposedly randomly generated data. If the algorithm used for generating these values lacks secure randomness, it can expose 
 avenues for devastating attacks.
 
+4.Installation
+
+On kali linux it is defaultly installed.You can download it on portswigger.
