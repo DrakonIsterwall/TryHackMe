@@ -44,3 +44,93 @@ avenues for devastating attacks.
 4.Installation
 
 On kali linux it is defaultly installed.You can download it on portswigger.
+
+5.The Dashboard
+
+It shows the Tasks,Issue acitivity,Event Log,Advisory.
+
+Answer:Event Log
+
+6.Navigation
+
+You can click through the Modules on the top bar: Dashboard,Target,Proxy,Intruder,Repeater,Collaborator,Sequencer,Decoder,Comparer
+Logger,Organizer,Extensions,Settings
+
+Answer:Proxy Tab
+
+7.Options
+
+There are two types of settings global setting known as user settings and project setting.
+
+Global Settings: These settings affect the entire Burp Suite installation and are applied every time you start the application. 
+They provide a baseline configuration for your Burp Suite environment.
+
+Project Settings: These settings are specific to the current project and apply only during the session. However, please note 
+that Burp Suite Community Edition does not support saving projects, so any project-specific options will be lost when you close 
+Burp.
+
+Click your way thorugh the settings to find the answers.
+
+Answer:Sessions,Suite,Hotkeys,yea
+
+8.Introduction to the Burp Proxy
+
+The Burp Proxy is a fundamental and crucial tool within Burp Suite. It enables the capture of requests and responses between 
+the user and the target web server. This intercepted traffic can be manipulated, sent to other tools for further processing, 
+or explicitly allowed to continue to its destination.
+
+Taking Control: The ability to intercept requests empowers testers to gain complete control over web traffic, making it 
+invaluable for testing web applications.
+
+Capture and Logging: Burp Suite captures and logs requests made through the proxy by default, even when the interception
+is turned off. This logging functionality can be helpful for later analysis and review of prior requests.
+
+WebSocket Support: Burp Suite also captures and logs WebSocket communication, providing additional assistance when analysing 
+web applications.
+
+Logs and History: The captured requests can be viewed in the HTTP history and WebSockets history sub-tabs, allowing for 
+retrospective analysis and sending the requests to other Burp modules as needed.
+
+9.Connecting trough the Proxy(FoxyProxy)
+
+Follow the instructions how to set up FoxyProxy for BurpSuite and then we can continue.
+
+10.Site Map and Issue Definitions
+
+Turn your configured Proxy on FoxyProxy on and dont forget to connect to the OpenVPN of tryhackme like me.Then visit all links
+on the website Bastion Hosting and then look under the Target what it found in the site map.
+
+Thats was it by me.
+http://x.x.x.x/5yjR2GLcoGoij2ZK
+
+Answer:THM{NmNlZTliNGE1MWU1ZTQzMzgzNmFiNWVk}
+
+11.The Burp Suite Browser
+
+Here it is explained that you can use the build in Burp Suite Browser that is based on chromium.
+
+12.Scoping and Targeting
+
+This topic is important since we dont wanna have everything in scope else it gonna be annoying and something always gonna trigger
+Burp Suite.
+
+By setting a scope for the project, we can define what gets proxied and logged in Burp Suite. We can restrict Burp Suite to 
+target only the specific web application(s) we want to test. The easiest way to do this is by switching to the Target tab, 
+right-clicking on our target from the list on the left, and selecting Add To Scope. Burp will then prompt us to choose whether 
+we want to stop logging anything that is not in scope, and in most cases, we want to select yes.
+
+However, even if we disabled logging for out-of-scope traffic, the proxy will still intercept everything. To prevent this, we 
+need to go to the Proxy settings sub-tab and select And URL Is in target scope from the "Intercept Client Requests" section.
+
+13.Proxying HTTPS
+
+We added the Burp Suite Cert to our Certificate Manager in Firefox.Just follow the instruction.
+
+14.Example Attack
+
+Follow the instruction to modify the email after you put in a legitimate email in the browser then intercept it with Burp
+and then we change it to the script attack and get the result.
+
+15.Conclusion
+
+
