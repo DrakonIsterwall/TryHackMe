@@ -204,19 +204,18 @@ Answer:THM{But_1ts_n0t_myf4ult!}
 
 16.Identification and Authentication Failures
 
-Brute force attacks,weak credentials,session cookies values.
+Brute force attacks,weak credentials,session cookies values.Everything that makes getting into a system easy.
 
+17.Identification and Authentication Failures Practical
+
+I dont like the example here it kinda doesnt display what was meant before.
 We go onto the website http://machine_ip:8088 and reregister " darren" and " arthur".Use one spacebar then write darren or arthur.
 
 Answer:fe86079416a21a3c99937fea8874b667,d9ac0f7db4fda460ac3edeb75d75e16e
 
-17.Identification and Authentication Failures Practical
-
-
-
 18.Software and Data Integrity Failures
 
-
+https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/b93dd140259193ee75ae1d12562bbd29.png
 
 19.Software Integrity Failures
 
