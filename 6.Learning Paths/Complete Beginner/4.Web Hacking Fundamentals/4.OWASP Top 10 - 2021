@@ -1,1 +1,40 @@
-Soon...
+1.Introduction
+
+This room breaks each OWASP topic down and includes details on the vulnerabilities, how they occur, and how you can exploit them.
+You will put the theory into practice by completing supporting challenges.
+
+    Broken Access Control
+    Cryptographic Failures
+    Injection
+    Insecure Design
+    Security Misconfiguration
+    Vulnerable and Outdated Components
+    Identification and Authentication Failures
+    Software and Data Integrity Failures
+    Security Logging & Monitoring Failures
+    Server-Side Request Forgery (SSRF)
+
+The room has been designed for beginners and assumes no previous security knowledge.
+
+2.Accessing Machines
+3.Broken Access Control
+4.Broken Access Control (IDOR Challenge)
+5.Cryptographic Failures
+6.Cryptographic Failures (Supporting Material 1)
+7.Cryptographic Failures (Supporting Material 2)
+8.Cryptographic Failures (Challenge)
+9.Injection 
+10.Command Injection
+11.Insecure Design
+12.Security Misconfiguration
+13.Vulnerable and Outdated Components
+14.Vulnerable and Outdated Components - Exploit
+15.Vulnerable and Outdated Components - Lab
+16.Identification and Authentication Failures
+17.Identification and Authentication Failures Practical
+18.Software and Data Integrity Failures
+19.Software Integrity Failures
+20.Data Integrity Failures
+21.Security Logging and Monitoring Failures
+22.Server-Side Request Forgery (SSRF)
+23.Whats Next?
