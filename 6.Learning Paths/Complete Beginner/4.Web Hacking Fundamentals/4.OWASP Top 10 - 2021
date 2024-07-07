@@ -181,19 +181,34 @@ Answers:todo.db,THM{Just_a_tiny_misconfiguration}
 
 13.Vulnerable and Outdated Components
 
+Under this link you can check the WordPress a website is using.
+https://wpscan.com/#solutions
 
+under this link we can find exploits
+https://www.exploit-db.com/
 
 14.Vulnerable and Outdated Components - Exploit
 
-
+Explains us how to exploit a vuln program like in this case nostromo 1.9.6.
+Kinda similiar to metasploit where we have to give arguments and so on to make a workin payload.
 
 15.Vulnerable and Outdated Components - Lab
 
+You can bypass the admin authentication with '1'='1 
+https://www.exploit-db.com/exploits/48960
 
+Couldnt find the exploit on exploit-db so i used the walktrough.
+https://medium.com/@corybantic/tryhackme-owasp-top-10-2021-writeup-159ccfadb4d7
+
+Answer:THM{But_1ts_n0t_myf4ult!}
 
 16.Identification and Authentication Failures
 
+Brute force attacks,weak credentials,session cookies values.
 
+We go onto the website http://machine_ip:8088 and reregister " darren" and " arthur".Use one spacebar then write darren or arthur.
+
+Answer:fe86079416a21a3c99937fea8874b667,d9ac0f7db4fda460ac3edeb75d75e16e
 
 17.Identification and Authentication Failures Practical
 
