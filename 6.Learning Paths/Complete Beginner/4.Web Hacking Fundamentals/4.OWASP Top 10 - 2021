@@ -17,9 +17,46 @@ You will put the theory into practice by completing supporting challenges.
 The room has been designed for beginners and assumes no previous security knowledge.
 
 2.Accessing Machines
+
+Start machine and connect your OpenVPN.
+
 3.Broken Access Control
+
+A regular visitor being able to access protected pages can lead to the following:
+
+    Being able to view sensitive information from other users
+    Accessing unauthorized functionality
+
+Simply put, broken access control allows attackers to bypass authorisation, allowing them to view sensitive data or perform tasks 
+they aren't supposed to.
+
 4.Broken Access Control (IDOR Challenge)
+
+Insecure direct object references (IDOR)
+
+Log into the http://machine_ip with the noot and test1234 and change the id in the url to 0 and get the flag.
+
+Answer:flag{fivefourthree}
+
 5.Cryptographic Failures
+
+The example here is emails:
+
+When you are accessing your email account using your browser, you want to be sure that the communications between you and the
+server are encrypted. That way, any eavesdropper trying to capture your network packets won't be able to recover the content of 
+your email addresses. When we encrypt the network traffic between the client and server, we usually refer to this as encrypting 
+data in transit.
+Since your emails are stored in some server managed by your provider, it is also desirable that the email provider can't read 
+their client's emails. To this end, your emails might also be encrypted when stored on the servers. This is referred to as 
+encrypting data at rest.
+
+At more complex levels, taking advantage of some cryptographic failures often involves techniques such as 
+"Man in The Middle Attacks", whereby the attacker would force user connections through a device they control. Then, they would 
+take advantage of weak encryption on any transmitted data to access the intercepted information (if the data is even encrypted 
+in the first place). Of course, many examples are much simpler, and vulnerabilities can be found in web apps that can be 
+exploited without advanced networking knowledge. Indeed, in some cases, the sensitive data can be found directly on the web 
+server itself.
+
 6.Cryptographic Failures (Supporting Material 1)
 7.Cryptographic Failures (Supporting Material 2)
 8.Cryptographic Failures (Challenge)
