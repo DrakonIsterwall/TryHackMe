@@ -1,1 +1,114 @@
+1.Introduction
+
+You start a Windows Machine you can connect on with Remote Desktop.You gonna need it to answer some of the questions.
+
+2.System Configuration
+
+We are introduced to the RUN msconfig and the taskmgr.
+
+Under tools you can find a lot of useful stuff.
+
+Under this link you can find more informations.
+https://learn.microsoft.com/en-us/troubleshoot/windows-client/performance/system-configuration-utility-troubleshoot-configuration-errors
+
+Answer:PsShutdown,Windows User,C:\Windows\System32\control.exe /name Microsoft.Troubleshooting,control.exe
+
+3.Change UAC Settings
+
+The UAC settings can be changed or even turned off entirely (not recommended).
+
+Answer:UserAccountControlSettings.exe
+
+4.Computer Managment
+
+We start with compmgmt.System Tools, Storage, and Services and Applications.
+
+In the task Scheduler we can make Tasks that execute as example script at certain events or times.
+Event Viewer allows us to view events that have occurred on the computer. These records of events can be seen as an audit 
+trail that can be used to understand the activity of the computer system. This information is often used to diagnose problems 
+and investigate actions executed on the system. 
+
+https://assets.tryhackme.com/additional/win-event-logs/five-event-types.png
+https://assets.tryhackme.com/additional/win-event-logs/standard-event-logs.png
+
+For more informations we can do this room:
+https://tryhackme.com/room/windowseventlogs
+
+Shared Folders is where you will see a complete list of shares and folders shared that others can connect to. 
+
+lusrmgr.msc is for Local User and Groups, we already had this in Windows Fundamentals I.
+Perfmon is used to view performance data either in real-time or from a log file. This utility is useful for troubleshooting 
+performance issues on a computer system, whether local or remote. (Sounds interesting)
+
+Device Manager allows us to view and configure the hardware, such as disabling any hardware attached to the computer.
+
+Under Storage is Windows Server Backup and Disk Management. We'll only look at Disk Management in this room.
+Disk Management is a system utility in Windows that enables you to perform advanced storage tasks.  Some tasks are:
+
+Set up a new drive
+Extend a partition
+Shrink a partition
+Assign or change a drive letter (ex. E:) 
+
+WMI Control configures and controls the Windows Management Instrumentation (WMI) service.
+
+Answer:compmgmt.msc,6:15 AM,sh4r3dF0Ld3r
+
+5.System Information
+
+We continue with msinfo32 in the msfconfig under tools.
+
+Read through/look at the pictures and answer the questions.
+
+Answer:msinfo32.exe,THM-WINFUN2,%SystemRoot%\system32\cmd.exe
+
+6.Ressource Monitor
+
+In the Overview tab, Resmon has four sections:
+
+    CPU
+    Disk
+    Network
+    Memory
+
+Under this sections we can see a lot of in-depth informations about the system, its good if you need to look into advanced
+troubleshooting in a system.
+
+Answer:resmon.exe
+
+7.Command Prompt
+
+In the command prompt we can use simple commands like hostname and whoami,but you can use the system over the cmd if u dont need
+a gui.Ipconfig is a often used command.With ipconfig /all we get all infos of the interfaces (in linux it is ifconfig)
+
+The next command is netstat. Per the help manual, this command will display protocol statistics and current TCP/IP network 
+connections.In Linux you can use netstat too but you would have to use some options to get a more refined result.
+
+Under this link we find a good list which commands we can use.
+https://ss64.com/nt/
+
+Answer:C:\Windows\System32\cmd.exe /k %windir%\system32\ipconfig.exe,ipconfig /all
+
+8.Registry Editor
+
+The registry contains information that Windows continually references during operation, such as:
+
+    Profiles for each user
+    Applications installed on the computer and the types of documents that each can create
+    Property sheet settings for folders and application icons
+    What hardware exists on the system
+    The ports that are being used.
+
+Warning: The registry is for advanced computer users. Making changes to the registry can affect normal computer operations. 
+
+https://learn.microsoft.com/en-us/troubleshoot/windows-server/performance/windows-registry-advanced-users
+
+RegEdt32 has a number of features RegEdit doesn't, but it also has some unique limitations: RegEdit can search keys and values, 
+while RegEdt32 can search only key names. 
+
+Answer:regedt32.exe
+
+9.Conclusion
+
+A lot of this stuff is good to get deep into the system if u need to get some informations or to change somethign if necessary.
 Soon...
