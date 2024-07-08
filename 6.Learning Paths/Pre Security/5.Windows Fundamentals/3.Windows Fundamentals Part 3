@@ -1,4 +1,14 @@
 1.Introduction
+
+Start the Windows Machine and connect with the site view or with your own machine.I prefer my own machine and use the following 
+command.
+
+xfreerdp /u:username /p:password /v:machine_ip /dynamic-resolution
+
+example:
+
+xfreerdp /u:administrator /p:letmein123! /v:x.x.x.x /dynamic-resolution
+
 2.Windows Updates
 3.Windows Security
 4.Virus & threat protection
