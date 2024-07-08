@@ -1,5 +1,6 @@
 1.Introduction
 
+Remember that depending on the Windows Version (XP,Vista,7,8,8.1,10,11 and lets not start with Mobile and Server Versions) it can look different.
 Start the Windows Machine and connect with the site view or with your own machine.I prefer my own machine and use the following 
 command.
 
@@ -10,11 +11,94 @@ example:
 xfreerdp /u:administrator /p:letmein123! /v:x.x.x.x /dynamic-resolution
 
 2.Windows Updates
+
+Click on the Windows Button on the left bottom corner and type in Windows Update and get through the different options ot get familiar. Nothin special here.
+In the View update history you can look up the answer.
+
+Answer:5/3/2021
+
 3.Windows Security
+
+The same as before just type in Windows Security and get familiar with the panels and so on.
+You have the Virus & threat protection,Firewall & network protection,App & browser control and Device security in it.
+
+Green mean everything is fine.Yellow mean there is something you can look up but doesnt mean its necessary.Red meand you have a warning that needs your attention.
+
+Answer:Virus & threat protection
+
 4.Virus & threat protection
+
+Here you can see current threats and you can make a scan (Quick Scan,Full Scan,Custom Scan) of your system.
+You can manage setting of the Virus & threat protection like as example Exclusions when u have some files that should not be scanned.
+
+Answer:Real-time protection
+
 5.Firewall & network protection
+
+Good summary in Tryhackme
+Per Microsoft, "Traffic flows into and out of devices via what we call ports. A firewall is what controls what is - and more importantly isn't - allowed to pass through 
+those ports. You can think of it like a security guard standing at the door, checking the ID of everything that tries to enter or exit".
+
+Dont disable your firewall unless you really know what u doing or if u wanna check like for example some program/game if it is getting blocked by the firewall ;)
+Good old LAN Gaming times where sometimes it did just not work unless you turned off the firewall.
+
+Domain:Network with a domain controller
+Private:Private/home networks
+Public:Internet,Wifi Hotspots,airports and so on 
+
+With WF.msc you can open the WIndows Defender Firewall easy.
+
+You can configure/add connections/ports under the Advanced Settings.
+
+Answer:Public network
+
 6.App & browser control
+
+Keep it as it is even when it is annoying sometimes but it protects you from malicious websites and downloads that try to get executed on your system.
+
 7.Device security
+
+The Core isolation prevents attacks from inserting code into high security processes.
+
+What is the Trusted Platform Module (TPM)?
+
+Per Microsoft, "Trusted Platform Module (TPM) technology is designed to provide hardware-based, security-related functions. A TPM chip is a secure crypto-processor that 
+is designed to carry out cryptographic operations. The chip includes multiple physical security mechanisms to make it tamper-resistant, and malicious software is unable to 
+tamper with the security functions of the TPM".
+
+Answer:Trusted Platform Module
+
 8.BitLocker
+
+Its a program that encrypts your harddrive/operating system to maximaze the security against lost,stolen and sold/thrown out pc’s.
+With the TPM is says that it offers the best protection, when u more interested into this topic read the following link and there you find the answer to the question.
+
+https://docs.microsoft.com/en-us/windows/security/information-protection/bitlocker/bitlocker-overview
+
+Answer:USB startup key
+
 9.Volume Shadow Copy Service
+
+If VSS is enabled you can make shadow copies/snapshots of your system.You can create restore points,perform system restores,configure restore settings and delete them.
+Some ransomware attacks even target this files so you cant recover from it, so the real security can be lower but better then nothing.
+
+If you want to get some hand on practice you can complete the room Day 23 of Advent of Cyber 2.
+
+Answer:Volume Shadow Copy Service
+
 10.Conclusion
+
+The room covers a lot so if u feel u need to go back and look over it again dont worry about it after some time you gonna remember where which setting is unless you are
+already a experienced windows user then this should be not a lot new stuff for you.
+
+some additional links:
+
+https://docs.microsoft.com/en-us/windows/win32/amsi/antimalware-scan-interface-portal
+https://docs.microsoft.com/en-us/windows/security/identity-protection/credential-guard/credential-guard-manage
+https://support.microsoft.com/en-us/windows/learn-about-windows-hello-and-set-it-up-dae28983-8242-bb2a-d3d1-87c9d265a5f0#:~:text=Windows%2010,in%20with%20just%20your%20PIN.
+https://www.csoonline.com/article/3253899/the-best-new-windows-10-security-features.html
+
+Attackers use built-in Windows tools and utilities in an attempt to go undetected within the victim environment.  This tactic is known as Living Off The Land. Refer to the 
+following resource here to learn more about this. 
+
+https://lolbas-project.github.io/
