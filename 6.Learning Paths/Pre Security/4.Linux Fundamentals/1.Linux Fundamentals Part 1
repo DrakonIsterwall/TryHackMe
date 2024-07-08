@@ -1,1 +1,57 @@
-Soon...
+1. Introduction 
+
+2. A bit of Background on Linux
+
+Key Informations are that Linux is an OS that has different variants like Windows (7,8,10,11 or Server).
+They are in general more lightweight and are used in many places.
+Answer: 1991
+Just google the answer.
+
+3.Interacting With Your First Linux Machine (In-Browser)
+Follow the written text.
+
+4.Running Your First few Commands
+
+Follow the written text its very simple and self explanatory.
+
+Answers: echo TryHackMe,tryhackme
+
+5.Interacting With the Filesystem!
+
+command	Full Name
+ls	    listing
+cd	    change directory
+cat	    concatenate
+pwd	    print working directory
+
+This commands are the most mandatory commands to move around in linux file systems.Tip u can list the files of a folder
+you are not in with ls ExampleFolder
+
+Answers: 4,folder4,Hello World,/home/tryhackme/folder4
+
+6.Searching for Files
+
+Here we learn the grep command that can help us to find data in a file like as an example when we wanna see if a specific IP
+has connected to our webserver and if it is in our webaccess log.
+
+Answer: THM{ACCESS}
+
+7.An Introduction to Shell Operators
+
+Symbol / Operator	Description
+  &	     This operator allows you to run commands in the background of your terminal.
+  &&	   This operator allows you to combine multiple commands together in one line of your terminal.
+  >	     This operator is a redirector - meaning that we can take the output from a command 
+         (such as using cat to output a file) and direct it elsewhere.
+  >>	   This operator does the same function of the > operator but appends the output rather than replacing 
+         (meaning nothing is overwritten).
+
+Answers: &,echo password123 > passwords,echo tryhackme >> passwords
+
+8.Conclusions & Summaries
+
+Train the commands by actively using them in the different rooms
+
+9.Linux Fundamentals Part 2
+
+Continue in the Part 2.
