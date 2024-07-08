@@ -1,1 +1,106 @@
-Soon...
+1.Introduction
+2.Deploy Your Linux Machine
+
+Deploy and ssh into the Attack Box with password tryhackme and user tryhackme
+
+ssh tryhackme@machine_ip 
+
+3.Terminal Text Editors
+
+create file with nano filename,you can ctrl and use options like ctrl+x to quit nano
+
+Some of VIM's benefits, albeit taking a much longer time to become familiar with, includes:
+
+    Customisable - you can modify the keyboard shortcuts to be of your choosing
+    Syntax Highlighting - this is useful if you are writing or maintaining code, making it a popular choice for 
+    software developers
+    VIM works on all terminals where nano may not be installed
+    There are a lot of resources such as cheatsheets, tutorials, and the sorts available to you use.
+
+TryHackMe has a room showcasing VIM if you wish to learn more about this editor!
+
+Answer:THM{TEXT_EDITORS}
+
+4.General/Useful Utilities
+
+Downloading Files (Wget)
+We're going to cover the use of wget .  This command allows us to download files from the web via HTTP -- as if you 
+were accessing the file in your browser. We simply need to provide the address of the resource that we wish to download. 
+For example, if I wanted to download a file named "myfile.txt" onto my machine, assuming I knew the web address it -- 
+it would look something like this:
+
+wget https://assets.tryhackme.com/additional/linux-fundamentals/part3/myfile.txt
+
+SCP Command
+With this information, let's craft our scp command (remembering that the format of SCP is just SOURCE and DESTINATION)
+
+Example from pc to remote pc:
+scp important.txt ubuntu@192.168.1.30:/home/ubuntu/transferred.txt
+
+Example let's reverse this and layout the syntax for using scp to copy a file from a remote computer that we're not logged into 
+scp ubuntu@192.168.1.30:/home/ubuntu/documents.txt notes.txt 
+
+With python3 you can make an easy HTTP Server to have your files where u excecuted the command be available to the be 
+downloaded with curl/wget
+
+python3 -m  http.server
+
+When you wanna wget the file then you need to specify the port default is 8000,ip from the machine u started the http server
+wget http://MACHINE_IP:8000/myfile
+
+When you wanna be more advanced use updog
+https://github.com/sc0tfree/updog
+
+Use Ctrl + C to stop the Python3 HTTPServer module once you are finished.
+
+Answer:THM{WGET_WEBSERVER}
+
+5.Processes 101
+
+We get to know about the command ps or top and so on they are pretty basic and are fine if thats the only thing u can use
+but if u can install software on the machine you are on then i would recommend htop
+
+with systemctl you can start services or stop them.
+
+An Introduction to Backgrounding and Foregrounding in Linux
+
+When u copy a file or download a file that you wanna use later and is not time critical that u need to see when its done,
+you can put it in the background so you dont need to open always a new terminal when u start a command that is in the foreground.
+Just add & add the and of your command so its run in the background.Ctrl+z you can put a running command in the background
+
+With fg and the id you get when u use the & operator you can bring the command back to the foreground or when you used ctrl+z 
+just use the shortcut again.
+
+Answer:301,SIGTERM,THM{PROCESSES},systemctl stop myservice,systemctl enable myservice,fg
+
+6.Maintaining Your System:Automation
+
+read manual of crontab its pretty basic for automation 
+
+Answer:@reboot
+
+7.Maintaining Your System:Package Management
+
+With add-apt-repository you can add more repositories but be aware you could potentially add a repo that is not tested/approved
+or probably malicious.
+Example how to add a repo.
+So, to start, we need to add the GPG key for the developers of Sublime Text 3. (Note that TryHackMe instances do not have 
+internet access and so we're not expecting you to add this to the machine that you deploy, as it would fail.)
+1. Let's download the GPG key and use apt-key to trust it:  
+wget -qO - https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
+2. Now that we have added this key to our trusted list, we can now add Sublime Text 3's repository to our apt sources list. 
+A good practice is to have a separate file for every different community/3rd party repository that we add.
+2.1. Let's create a file named sublime-text.list in /etc/apt/sources.list.d and enter the repository information like so
+cd into the /etc/apt/sources.list.d and use touch to create a sublime.list file and so on its for debian
+deb https://download.sublimetext.com/ apt/stable
+Then use apt update and then you can install sublime with apt install sublime-text
+
+Removing packages is as easy as reversing. This process is done by using the 
+add-apt-repository --remove ppa:PPA_Name/ppa command or by manually deleting the file that we previously added to. 
+Once removed, we can just use apt remove [software-name-here] i.e. apt remove sublime-text
+
+8.Maintaining Your System:Logs
+
+Answer:10.9.232.111,catsanddogs.jpg
+
+9.Conclusions & Summaries
