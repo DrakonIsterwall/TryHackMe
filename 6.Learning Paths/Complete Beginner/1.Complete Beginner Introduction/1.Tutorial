@@ -1,6 +1,8 @@
 1.Starting your first machine
 
-Start the machine and wait till it show the IP and then copy and paste it into your browser.
+Start the machine and an Attack Box if you are not already connected through openvpn.
+Wait till it show the IP and then copy and paste it into your browser on the Attack Box.When u are already
+connected through openvpn then you can just copy paste the ip into your own browser.
 You can do this too with an openvpn connection,proceed to the OpenVPN Room then you can try this method too.
 When you've finished with a machine in any room, make sure to stop it by clicking the red "Terminate" button.
 
