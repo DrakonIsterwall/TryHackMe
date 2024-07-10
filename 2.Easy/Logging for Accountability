@@ -1,0 +1,27 @@
+1.Introduction
+
+
+Understand where data originates, how it is stored, and how a security engineer can leverage it.
+Understand why accountability is important to security and how logging can help improve its efficacy.
+Apply logs and other data sources to incident response and the principle of accountability.
+
+Before beginning this room, we recommend you understand logging capabilities and log data sources or complete Intro to Logs. We also recommend a basic understanding of 
+Splunk or complete Splunk Basics.
+
+2.Importance of Logging and Data Aggregation
+
+
+
+3.Log Ingestion and Storage
+
+
+
+4.Types of Logs and Data Sources
+
+
+
+5.Using Logs Effectively
+
+
+
+6.Improving Incident Response with Accountability
