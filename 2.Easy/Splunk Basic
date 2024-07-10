@@ -1,5 +1,18 @@
 1.Introduction
 
+This room covers the following learning objectives:
+
+Splunk overview
+Splunk components and how they work
+Different ways to ingest logs
+Normalization of logs
+
+2.Connect with the Lab
+
+Start Machine and connect to the network with openvpn.Then start Splunk thorugh the browser and copy paste the IP of the mache you started.
+
+3.Splunk Components
+
 Splunk Forwarder is a lightweight agent installed on the endpoint intended to be monitored, and its main task is to collect the data and send it to the Splunk instance.
 It does not affect the endpoint's performance as it takes very few resources to process. Some of the key data sources are:
 
@@ -8,20 +21,39 @@ Windows machine generating Windows Event Logs, PowerShell, and Sysmon data.
 Linux host generating host-centric logs.
 Database generating DB connection requests, responses, and errors.
 
-2.Connect with the Lab
+Splunk Indexer
 
+Splunk Indexer plays the main role in processing the data it receives from forwarders. It takes the data, normalizes it into field-value pairs, determines the datatype of 
+the data, and stores them as events. Processed data is easy to search and analyze.
 
+Search Head
 
-3.Splunk Components
+Splunk Search Head is the place within the Search & Reporting App where users can search the indexed logs as shown below. When the user searches for a term or uses a 
+Search language known as Splunk Search Processing Language, the request is sent to the indexer and the relevant events are returned in the form of field-value pairs.
 
-
+Answer:Forwarder
 
 4.Navigating Splunk
 
+Click your way
 
+Answer:Monitor
 
 5.Adding Data
 
+Add the downloaded Data (json file) to Splunk and use the Upload Method click your way through and add an index called VPN_Logs.
 
+Look up with the search bar to get the informations.I looked up France and then substracted the total event - the events that are from France.
+Compine the IP with VPn in the search bar to get the information 14 events.
+
+Answer:2862,60,Smith,2814,14
 
 6.Conclusion
+
+In this room, we explored Splunk, its components, and how it works. Please check the following Splunk walkthrough and challenge rooms to understand how Splunk is 
+effectively used in investigating the incidents.
+
+Incident Handling with Splunk
+Investigating With Splunk
+Benign - Challenge
+PoshEclipse - Challenge
