@@ -42,6 +42,92 @@ docker ps lists running containers,docker ps -a lists running and stopped contai
 Answer:docker run -it,docker run -d,docker run -p 80:80,docker ps,docker ps -a
 
 4.Intro to Dockerfiles
+
+Create and empty file with touch then write there the INSTRUCTIONS.We gonna use the little bit advanced one INSTRUCTION.
+
+# Use Ubuntu 22.04 as the base operating system of the container
+FROM ubuntu
+# Update the APT repository to ensure we get the latest version of apache2
+RUN apt-get update -y 
+# Install apache2
+RUN apt-get install apache2 -y
+# Tell the container to expose port 80 to allow us to connect to the web server
+EXPOSE 80 
+# Tell the container to run the apache2 service
+CMD ["apache2ctl", "-D","FOREGROUND"]
+
+docker build -t webserver .
+
+docker run -d --name webserver -p 80:80  webserver
+
+Then when we connect to the localhost on port 80 we should see the apache2 default page.
+
+FROM,RUN,COPY,WORKDIR,CMD,EXPOSE
+
+Answers:FROM,RUN,build,-t,
+
 5.Intro to Docker Compose
+
+It is used to run multiple containers too combine couple services to get it running together.
+
+Now, we could manually run the two containers via the following:
+
+Creating the network between the two containers: docker network create ecommerce
+Running the Apache2 webserver container: docker run -p 80:80 --name webserver --net ecommerce webserver
+Running the MySQL Database server: docker run --name database --net ecommerce webserver
+
+or we use docker compose to make it easier deployable in a large scale.
+
+An example docker-compose.yml could look like this :
+
+version: '3.3'
+services:
+  web:
+    build: ./web
+    networks:
+      - ecommerce
+    ports:
+      - '80:80'
+
+
+  database:
+    image: mysql:latest
+    networks:
+      - ecommerce
+    environment:
+      - MYSQL_DATABASE=ecommerce
+      - MYSQL_USERNAME=root
+      - MYSQL_ROOT_PASSWORD=helloword
+    
+networks:
+  ecommerce:
+
+
+
+Answers:up,down,docker-compose.yml
+
 6.Intro to Docker Socket
+
+This task will explain how Docker interacts between the operating system and the container. When you install Docker, there are two programs that get installed:
+
+    The Docker Client
+    The Docker Server
+
+Docker works in a client/server model. Specifically, these two programs communicate with each other to form the Docker that we know and love. Docker achieves this 
+communication using something called a socket. Sockets are an essential feature of the operating system that allows data to be communicated. 
+
+In the context of Docker, the Docker Server is effectively just an API. The Docker Server uses this API to listen for requests, whereas the Docker Client uses the 
+API to send requests.
+
+Answers:Interprocess Communication,API
+
 7.Practical
+
+Start the machine.Takes some time to start the machine, so grab a cup of coffee or gift me one at https://buymeacoffee.com/drakonisterwall :D
+
+With docker ps i could see the running container
+
+docker run -d -p 80:80 webserver
+Then use the link to get the flag
+
+Answers:cloudisland,THM{WEBSERVER_CONTAINER}
