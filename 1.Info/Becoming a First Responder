@@ -40,22 +40,106 @@ Answer:4,7,1,chain of custody
 
 3.Alerting the Relevant Stakeholders
 
+Incident Playbooks are good for blueteams to have a guide how to react in certain incidents.For example, if credentials were compromised through phishing, the phishing 
+playbook would indicate that the team would, at that point, also start using the account compromise playbook
 
+Call trees
+Usually, there are multiple ways that you can alert the team that an incident is occurring. In large organisations, this process is usually fully automated using systems 
+such as Jira, which allows you to log and then escalate a ticket based on the severity of the incident. Once a ticket is raised, the relevant stakeholders will be notified 
+automatically.
+Another common approach is to make use of a call tree. Call trees indicate who has to be informed and who is responsible for informing them. The structure also shows who 
+can be escalated to in the event that a certain individual is not available to perform their responsibilities. Once the escalation reaches the required manager, they can, 
+at that point, assist by using their own call tree to further escalate the issue as required based on the severity of the incident.
+
+Answer:Playbook,Call Tree
 
 4.Isolation of the Incident
 
+Method of containments
 
+Network Segmentation - The host is isolated from the network perspective by being placed into a different network segment. This isolation aims to ensure that the infection 
+cannot spread to other hosts on the network. Effective network security is very important!
+Physical Isolation - The host is collected and fully isolated from the network and users. For example, a user's workstation is confiscated. This isolation aims to ensure 
+that no further actions can be performed on the host and evidence is preserved.
+Virtual Isolation - The host is restricted from communicating through the use of software. For example, the EDR can be used to jail the host, meaning it is only allowed 
+to communicate with specific entities on the network and perform certain actions. The goal of this isolation is similar to confiscating the host, but can be performed remotely.
+Furthermore, in some cases, if the EDR is compromised, this may not work.
+
+The Responsibility of the First Responder
+
+As mentioned before, as the security engineer, you may not be responsible for isolating the incident. However, you will be relied upon as a subject matter expert to help the 
+team understand what containment methods may be possible and to also understand what the impact would be of implementing these containment methods.
+
+Answers:Virtual Isolations,Physical Isolation,Network Segmentation
 
 5.Business Continuity
 
+A BCP is a plan meant to help recover from an incident. It is important to note that as the main focus is on BCP, we should not perform this before containing the incident.
 
+A BCP is very similar to a Disaster Recovery Plan (DRP). However, the DRP will mainly focus on the technical recovery of our division. A BCP is more encompassing and covers 
+elements such as communication to internal and external stakeholders. A DRP is usually included in the BCP to help with the technical recovery.
+
+Creating a BCP
+Perform a Business Impact Analysis,Define the Potential Recovery Actions,Plan the BCP Team Structure,Test the BCP Plan 
+
+BCP Metrics
+
+Recovery Point Objective - The amount of data we are willing to accept can be lost. For example, if we say we are willing to lose an hour of data but no more, then our 
+backups have to run every single hour.
+Recovery Time Objective - The amount of time required to recover the hardware of our system
+Work Recovery Time -The amount of time required to recover the software and data of our system
+Maximum Tolerable Downtime -The maximum amount of downtime that we are willing to accept. We have to ensure that our RTO and WRT combined do not exceed this threshold
+Mean Time Between Failures - How long our system will operate between incidents on average
+Mean Time To Repair - How long it will take to recover our system on average
+
+Answers:Business Continuity Plan,Disaster Recovery Plan,Recovery Time Objective,Mean Time to Repair
 
 6.Documentation of Actions
 
+Make sure you make Documentations on a lot of stuff because people cant remember everything,specially when its cryptic names and so on.
 
+Documentation Templates
+
+In order to assist with the documentation process, it is usually recommended that the BCP document also contain a documentation template that can be used. 
+We do not want to waste time creating this during the incident, so preparing this template is important. The template should allow for the following information to be
+provided:
+
+Time at which the action was requested. Times should ideally be provided in a standard format such as UTC to ensure that times can be matched to other sources
+Description of the update or action that was performed
+Reasoning for performing the action
+Individual approving the action being performed
+Individual responsible for performing the action
+Time at which the action was performed
+Description of changes observed after the action was performed
+
+Documentation is not only important to perform a successful handover, but also provides us with the ability to review the incident and actions taken at a later date. 
+It is through this review process that we can investigate what went wrong and what can be done to ensure that it is prevented in the future. This process helps us reduce 
+the number of incidents that we have.
+
+Use Universal Time Coordinated (UTC) then you know which time it was that the incident happened or the documentation was done and you can understand it globally since
+we have different time some.You could combine it with military time to safe some time writing when you or the people u work with are familiar with it.
+
+Answer:UTC
 
 7.Handing Over
 
+Congrats! You have served your role as first responder and the blue team has fully taken over! We are not out of the woods yet, make sure to support the team as they work 
+on closing the incident. The last step is to ensure that you perform an accurate handover. Ensure everything is documented and the team can start fighting the fire.
 
+Let's practice what you have learned. Launch the static site and give being a first responder a go!
+
+Click View Site and get through it for the flag.
+
+Answers:THM{I.am.ready.to.become.a.first.responder}
 
 8.Conclusion
+
+Good summary of a first responder:
+
+In this room, we have learned what it takes to become a first responder. To summarise:
+
+Make sure that you preserve evidence and understand that some evidence may be more volatile.
+Make sure that you understand how you should raise the alarm that an incident has occurred, whether through a ticket submission or a call tree.
+Isolation is key to ensuring that the scope of the incident can be contained. However, there are many different methods that can be used for isolation.
+BCP can be used to ensure that rapid changes can be made to help address the incident, but documentation is incredibly important to be able to retrace 
+actions and get the environment back to business as usual as fast as possible.
