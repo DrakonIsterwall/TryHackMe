@@ -1,0 +1,48 @@
+1.Introduction
+
+A computer network is a group of computers and devices connected with each other.Network security consists of different hardware and software solutions to achieve the set 
+security goals. Hardware solutions refer to the devices you set up in your network to protect your network security. They are hardware, so you can literally hold them. 
+A hardware appliance might look something like the image below.
+
+Examples of hardware appliances include:
+
+Firewall appliance: The firewall allows and blocks connections based on a predefined set of rules. It restricts what can enter and what can leave a network.
+Intrusion Detection System (IDS) appliance: An IDS detects system and network intrusions and intrusion attempts. It tries to detect attackers’ attempts to break into your 
+network.
+Intrusion Prevention System (IPS) appliance: An IPS blocks detected intrusions and intrusion attempts. It aims to prevent attackers from breaking into your network.
+Virtual Private Network (VPN) concentrator appliance: A VPN ensures that the network traffic cannot be read nor altered by a third party. It protects the confidentiality 
+(secrecy) and integrity of the sent data.
+
+On the other hand, we have software security solutions like Antivirus or Host Firewalls.
+
+Answer:Host Firewall
+
+2.Methodology
+
+Breaking into a target network usually includes a number of steps. According to Lockheed Martin, the Cyber Kill Chain has seven steps:
+
+Recon: Recon, short for reconnaissance, refers to the step where the attacker tries to learn as much as possible about the target. Information such as the types of servers, 
+operating system, IP addresses, names of users, and email addresses, can help the attack’s success.
+Weaponization: This step refers to preparing a file with a malicious component, for example, to provide the attacker with remote access.
+Delivery: Delivery means delivering the “weaponized” file to the target via any feasible method, such as email or USB flash memory.
+Exploitation: When the user opens the malicious file, their system executes the malicious component.
+Installation: The previous step should install the malware on the target system.
+Command & Control (C2): The successful installation of the malware provides the attacker with a command and control ability over the target system.
+Actions on Objectives: After gaining control over one target system, the attacker has achieved their objectives. One example objective is Data Exfiltration 
+(stealing target’s data).
+
+Answer:Recon
+
+3.Practical Example of Network Security
+
+Follow the instructions.
+
+Let’s summarize what we have done in this task to get root access on the target system of IP address MACHINE_IP:
+
+We used nmap to learn about the running services.
+We connected to the FTP server to learn more about its configuration.
+We discovered a file containing the root password mistakenly copied to a public folder.
+We used the password we found, allowing us to log in successfully.
+We gained access to all the users’ files.
+
+Answers:ABC789xyz123,THM{FTP_SERVER_OWNED},THM{LIBRARIAN_ACCOUNT_COMPROMISED}
