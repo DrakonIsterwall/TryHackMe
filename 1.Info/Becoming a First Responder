@@ -12,12 +12,26 @@ A significant amount of important evidence is found in volatile spaces, meaning 
 It immediately alerts the threat actor that we might be on to them, meaning they might start a more disruptive attack.
 
 1. Registers and Cache
+Volatile and hard to get.
 2. Routing Table, ARP Cache, Process Table, Kernel Statistics and Memory
+Capture information about the processes that were executing at the time of the incident.Capture information such as the routing and ARP tables. Routes and ARP entries have a 
+specific time-to-live, meaning if we are unable to capture this data in time, we might not have the full picture of what network communication took place at the time the
+incident occurred. These can be captured from the host itself.
 3. Temporary File Systems
+It is common for applications to create and use temporary files on hosts. For example, on a web server, active sessions are usually stored in temporary files. While these
+files are often preserved longer on the host, we do not want to take any chances in losing these files that may be important for the investigation.
 4. Disk
+Take a snapshot of the host's drive.
 5. Remote Logging and Monitoring
+As discussed in the Logging for Accountability and Monitoring room, all hosts should forward their logs to a secure remote location. However, even these remote locations 
+do not have an infinite log retention policy. Since, at this stage, we are unsure how far back the incident goes, we want to make sure that we preserve these remote logs 
+as far back as possible while the investigation is still ongoing.
 6. Physical Configuration and Network Topology
+
 7. Archival Media
+Last on the list is backups. While this information will usually not be volatile, it can be used as evidence to help us determine how far back the incident went when
+comparing artefacts on the current disk to that found on backups. However, as these backups are usually not going anywhere, we have a bit more breathing room to focus on other,
+more volatile sources first.
 
 Answer:4,7,1,chain of custody
 
