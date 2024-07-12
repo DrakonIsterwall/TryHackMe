@@ -27,11 +27,14 @@ As discussed in the Logging for Accountability and Monitoring room, all hosts sh
 do not have an infinite log retention policy. Since, at this stage, we are unsure how far back the incident goes, we want to make sure that we preserve these remote logs 
 as far back as possible while the investigation is still ongoing.
 6. Physical Configuration and Network Topology
-
+Understanding and preserving evidence, such as which subnet the host was connected to, will be important when we try to understand the scope of the incident and can 
+point us in the direction of other hosts that should be scrutinised and investigated.
 7. Archival Media
 Last on the list is backups. While this information will usually not be volatile, it can be used as evidence to help us determine how far back the incident went when
 comparing artefacts on the current disk to that found on backups. However, as these backups are usually not going anywhere, we have a bit more breathing room to focus on other,
 more volatile sources first.
+
+Don't trust the programs on the system.Don't run programs that modify the access times of files.
 
 Answer:4,7,1,chain of custody
 
