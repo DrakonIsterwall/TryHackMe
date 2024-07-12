@@ -3,7 +3,44 @@
 It is recommended that you already finished the Linux Fundamentals to have a good understanding of linux commands.
 
 2.Basic Docker Syntax
+
+In this room, we are only going to cover the following options for docker images:
+    pull (we have done this above!)
+    ls (list images)
+    rm (remove an image)
+    build (we will come onto this in the “Building your First Container” task)
+
+Docker Image ls
+This command allows us to list all images stored on the local system
+
+Docker Image rm
+If we want to remove an image from the system, we can use docker image rm along with the name (or Image ID)
+
+The last answer is with the tag after the : mostly used for different versions like docker pull ubuntu:22.04 or docker pull ubuntu:21.04 as example.
+
+Answer:docker pull,docker image ls,docker pull tryhackme,docker pull tryhackme:1337
+
 3.Running Your First Container
+
+Syntax of the docker run is : docker run [OPTIONS] IMAGE_NAME [COMMAND] [ARGUMENTS...] 
+
+An image named "helloworld"
+"Interactively" by providing the -it switch in the [OPTIONS] command. This will allow us to interact with the container directly.
+I am going to spawn a shell within the container by providing /bin/bash as the [COMMAND] part. This argument is where you will place what commands you want to 
+run within the container (such as a file, application or shell!)
+
+docker run -it helloworld /bin/bash
+
+-it	This argument has two parts. The "i" means run interactively, and "t" tells Docker to run a shell within the container. We would use this option if we wish to
+interact with the container directly once it runs.
+
+-p is for binding ports, --name is to name the container in something easy to read.
+If u want to read more about all the options you can find them here : https://docs.docker.com/engine/reference/run/
+
+docker ps lists running containers,docker ps -a lists running and stopped containers (good for start,stop command if u forgot the name of a stopped or exited container)
+
+Answer:docker run -it,docker run -d,docker run -p 80:80,docker ps,docker ps -a
+
 4.Intro to Dockerfiles
 5.Intro to Docker Compose
 6.Intro to Docker Socket
