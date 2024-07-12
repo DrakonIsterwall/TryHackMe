@@ -1,7 +1,67 @@
 1.Introduction
+
+By completing this room, you will know:
+
+What containerisation is and what containers are and where and why containerisation is used?A fundamental understanding of the popular containerisation technology called 
+Docker.What makes Docker so popular and how containerisation works.
+
 2.What is Containerisation
+
+Modern applications are often complex and usually depend on frameworks and libraries being installed on a device before the application can run. These dependencies can:
+
+Be difficult to install depending on the environment the application is running (some operating systems might not even support them!)
+Create difficulty for developers to diagnose and replicate faults, as it could be a problem with the application's environment - not the application itself!
+Can often conflict with each other. For example, having multiple versions of Python to run different applications is a headache for the user, and an application may work 
+with one version of Python and not another.
+
+Containerisation platforms remove this headache by packaging the dependencies together and “isolating” the application’s environment.
+
+The isolation offered by namespaces adds a benefit of security because it means that if an application in the container is compromised, usually 
+(unless they share the same namespace), other containers are unaffected.
+
+Alternatives such as virtual machines will require a whole operating system being installed to run the application (taking up large amounts of disk space and other 
+computing resources such as CPU and RAM)
+
+Answers:namespace,nay
+
 3.Introducing Docker
+
+Docker employs the same technology used in containerisation to isolate applications into containers called the Docker Engine. The Docker Engine is essentially an API 
+that runs on the host operating system, which communicates between the operating system and containers to access the system’s hardware (such as CPU, RAM, networking and disk)
+
+Because of this, the Docker engine is extensive and allows you to do things like:
+
+Connect containers together (for example, a container running a web application and another container running a database)
+Export and import applications (images),Transfer files between the operating system and container
+
+Docker uses the programming syntax YAML to allow developers to instruct how a container should be built and what is run. This is a significant reason why Docker is so 
+portable and easy to debug; share the instructions, and it will build and run the same on any device that supports the Docker Engine.
+
+Answers:An Image,YAML
+
 4.The History of Docker
+
+Answer:2013,PyCon,V7
+
 5.The Benefits & Features of Docker
+
+Docker is free,effiecent,minimal,easy to share.
+
 6.How does Containerisation Work?
+
+Namespaces essentially segregate system resources such as processes, files and memory away from other namespaces.
+
+Every process running on Linux will be assigned two things:
+
+    A namespace
+    A process identifier (PID)
+
+look that command line on linux with ps aux or use htop if already installed
+
+Answer:ps aux
+
 7.Practical
+
+Click View Site and complete it to get the flag.
+
+Answer:THM{APPLICATION_SHIPPED}
