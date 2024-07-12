@@ -9,3 +9,7 @@ I gonna try to do every day 1 new room or more and to catch up with the writeups
 
 If u find something that is wrong make a pull request and i gonna revalue my text.<br>
 Thanks in advance.
+
+
+MM:DD:YYYY
+07122024 - got under the top 5% in tryhackme position 58,328
