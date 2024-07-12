@@ -3,9 +3,42 @@
 
 
 2.Preservation of Evidence
+
+Volatility of Evidence
+
+The biggest mistake that is performed during incidents is shutting the host down. This is wrong for the following two main reasons:
+
+A significant amount of important evidence is found in volatile spaces, meaning it is lost as soon as the device loses power
+It immediately alerts the threat actor that we might be on to them, meaning they might start a more disruptive attack.
+
+1. Registers and Cache
+2. Routing Table, ARP Cache, Process Table, Kernel Statistics and Memory
+3. Temporary File Systems
+4. Disk
+5. Remote Logging and Monitoring
+6. Physical Configuration and Network Topology
+7. Archival Media
+
+Answer:4,7,1,chain of custody
+
 3.Alerting the Relevant Stakeholders
+
+
+
 4.Isolation of the Incident
+
+
+
 5.Business Continuity
+
+
+
 6.Documentation of Actions
+
+
+
 7.Handing Over
+
+
+
 8.Conclusion
