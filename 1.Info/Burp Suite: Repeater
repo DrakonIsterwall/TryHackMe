@@ -3,6 +3,8 @@
 Start the machine and in this room we gonna learn more about the Repeater Module.
 If u didnt work with BurpSuite before i recommend you to complete the Burpsuite Basic room since it has some configs you gonna need.
 
+The Task 8 needs a understanding for SQL Injections so try to to the SQL Injection Room before.
+
 2.What is Repeater?
 
 
@@ -34,8 +36,8 @@ Answer:Inspector
 Once a request has been captured in the Proxy module, we can send it to Repeater by either right-clicking on the request and selecting Send to Repeater, or by utilizing 
 the keyboard shortcut Ctrl + R.
 Thats where the magic happens we get the Request we want to our Repeater module.First we send it to get a Response then we modify our Request to achieve something that could
-us let into some area of a website where we maybe dont belong.Dont forget the history buttons (looks like left and right,they are on the right site of the Send button) with that
-we can look through our different modifications.
+us let into some area of a website where we maybe dont belong.Dont forget the history buttons (looks like left and right,they are on the right site of the Send button) with 
+that we can look through our different modifications.
 
 4.Message Analysis Toolbar
 
@@ -73,17 +75,64 @@ examining how a web server responds to unexpected headers.
 Response Headers: This section displays the headers returned by the server in response to our request. It cannot be modified, as we have no control over the headers returned
 by the server. Note that this section becomes visible only after sending a request and receiving a response.
 
+Answer:Body Parameters
 
 6.Practical Example
 
+Start your Burpsuite get into your Setting go under Project then under Scope and then you add your Target Scope. Include in scope type there the ip of the machine in.
+Then we check the AND URL IS IN SCOPE under Proxy in the Request and Response rules. With that we dont get flooded anymore with so much different traffic from all other 
+websites. Then we copy the the URL and get our Request in the Proxy under Intercept then we click on Action and send it to the Repeater then we can turn off the Intercept
+and click on Repeater.Then you add the FlagAuthorised: True to the Request to get the flag. My Burpsuite had some problems to show me the Response and i switched between http1
+and http2 and send it again then it showed me a Response with the flag.
 
+I found the mistake when i clicked on hint it showed me the following text : Make sure you leave the two blank lines at the bottom of the request!
+
+GET / HTTP/1.1
+Host: 10.10.140.68
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate, br
+Upgrade-Insecure-Requests: 1
+Flagauthorised: True
+This 
+and this line have to be left blank
+
+That helped me to get the flag.
+
+Answer:THM{Yzg2MWI2ZDhlYzdlNGFiZTUzZTIzMzVi}
 
 7.Challenge
 
+We turn on the Proxy Intercept and paste the x.x.x.x/products/1 then we send the Request to the Repeater and then we can turn off the Proxy Intercepter and after that we can
+change the attributes in this case it wants some extreme inputs to trigger a 500 error.I tried a large number first like x.x.x.x/products/999999999 and still only got a 404 
+error.Then i tried letters and did got the same.At last i tried negative numbers -1 and got a 500 error then i changed from Pretty to Render then i could see the flag or an 
+another possibility is to look under Pretty in the html code then you can find the flag too.
 
+Answer:THM{N2MzMzFhMTA1MmZiYjA2YWQ4M2ZmMzhl}
 
-8.Extra-mile Challnge
+8.Extra-mile Challenge
 
+Here we intercept again a Url this time it is x.x.x.x/about/2 and we send it again to reapeater and then we add ' after the 2 to look how the sql server gonna respond and we
+can see the result under Render.
 
+After that we use a UNION Query /about/0 UNION ALL SELECT column_name,null,null,null,null FROM information_schema.columns WHERE table_name="people"
+
+With this Query we get more informations about the differen columns
+/about/0 UNION ALL SELECT group_concat(column_name),null,null,null,null FROM information_schema.columns WHERE table_name="people"
+
+After that we got the eight columns id, firstName, lastName, pfpLink, role, shortRole, bio, and notes
+
+With this we can get the flag
+/about/0 UNION ALL SELECT notes,null,null,null,null FROM people WHERE id = 1
+
+If this looks like gibberish to you then try to get a understanding for SQl Injections and SQL Databases how they are built.I must be honest i dont
+understand this Querys 100% because my last time that i worked with databases is already some time ago but i at least understood what the querys did and how i have to
+proceed to get my flag.
+
+Answer:THM{ZGE3OTUyZGMyMzkwNjJmZjg3Mzk1NjJh}
 
 9.Conclusion
+
+I have to refresh my Sql skills but when you did not understand it at all dont get discouraged since we are here to learn something and you already got better step by step
+you dont have to know everything in an blink of an eye.Just remind yourself that you still have a lot of things ahead and write Sql querys on your to do list.
