@@ -31,7 +31,11 @@ Answer:Inspector
 
 3.Basic Usage
 
-
+Once a request has been captured in the Proxy module, we can send it to Repeater by either right-clicking on the request and selecting Send to Repeater, or by utilizing 
+the keyboard shortcut Ctrl + R.
+Thats where the magic happens we get the Request we want to our Repeater module.First we send it to get a Response then we modify our Request to achieve something that could
+us let into some area of a website where we maybe dont belong.Dont forget the history buttons (looks like left and right,they are on the right site of the Send button) with that
+we can look through our different modifications.
 
 4.Message Analysis Toolbar
 
