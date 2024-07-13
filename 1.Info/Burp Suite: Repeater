@@ -39,10 +39,39 @@ we can look through our different modifications.
 
 4.Message Analysis Toolbar
 
+Pretty: This is the default option, which takes the raw response and applies slight formatting enhancements to improve readability.
+Raw: This option displays the unmodified response directly received from the server without any additional formatting.
+Hex: By selecting this view, we can examine the response in a byte-level representation, which is particularly useful when dealing with binary files.
+Render: The render option allows us to visualize the page as it would appear in a web browser. While not commonly utilised in Repeater, as our focus is usually on the 
+source code, it still offers a valuable feature. For most scenarios, the Pretty option is generally sufficient. However, it is beneficial to be acquainted with the usage of 
+the other three options.
 
+Adjacent to the view buttons, on the right-hand side, we find the Show non-printable characters button (\n). This functionality enables the display of characters that may 
+not be visible with the Pretty or Raw options. For example, each line in the response typically ends with the characters \r\n, representing a carriage return followed by 
+a new line. These characters play an important role in the interpretation of HTTP headers.
+While not mandatory for most tasks, this option can prove advantageous in certain situations.
+
+Answer:Render
 
 5.Inspector
 
+For instance, in the Request Attributes section, we can alter elements related to the location, method, and protocol of the request. This includes modifying the desired 
+resource to retrieve, changing the HTTP method from GET to another variant, or switching the protocol from HTTP/1 to HTTP/2:
+
+Other sections available for viewing and/or editing include:
+
+Request Query Parameters: These refer to data sent to the server via the URL. For example, in a GET request like https://admin.tryhackme.com/?redirect=false, the query
+parameter redirect has a value of "false".
+
+Request Body Parameters: Similar to query parameters, but specific to POST requests. Any data sent as part of a POST request will be displayed in this section, allowing us
+to modify the parameters before resending.
+Request Cookies: This section contains a modifiable list of cookies sent with each request.
+
+Request Headers: It enables us to view, access, and modify (including adding or removing) any headers sent with our requests. Editing these headers can be valuable when 
+examining how a web server responds to unexpected headers.
+
+Response Headers: This section displays the headers returned by the server in response to our request. It cannot be modified, as we have no control over the headers returned
+by the server. Note that this section becomes visible only after sending a request and receiving a response.
 
 
 6.Practical Example
