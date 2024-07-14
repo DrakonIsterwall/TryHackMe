@@ -1,25 +1,182 @@
 1.Tmux practice machine
 
+I used the built in attack box and connected with ssh to the started machine, maybe thats a reason why some of the commands didnt work by me properly.
 
+credentials:
+
+tux
+tmuxwithremux
+
+Start the machine and then connect to it over the web based attack box or use your own with connecting over openvpn before to the network and then ssh.
+Second option is to install it on your own linux machine and then go on and finish the tasks.
+ 
 
 2.Starting tmux "Sessions" and default tmux "prefix"
 
+To change the session name you have to press ctrl b and then shift b and then you can change the name and press enter.
+When u want to exit a tmux session without closing it you can press ctrl b and then d,if u wanna get back into that session you can check which sessions
+are running with tmux ls and reattaching to the session works with the following command tmux attach -t sessionname.
+Killing a session is working with this command tmux kill-session -t sessionname or reattach to it and then use the command exit,then you exit and close it.
+Switching between session with ctrl b s,thats way easier then deattach and reattach and so on.
 
+Could not get it to work it did not change the directory by me
+ctrl b shift :attach -c /path/to/new/starting/directory
+
+The only way i could make it work is with a new tmux with the command tmux new -s sessionname -c /path/to/new/start/directory
+
+Even though at the start tmux doesn't allow nested tmux within a tmux. Attaching or starting a new tmux session on another computer by an ssh connection. Can make a nested tmux.
+Not a problem. Just by changing the number of prefix used before the following command. Can determine which session gets the command.
+
+prefix, prefix, and command. This will run on the second nested tmux session of the ssh ubuntu machine.
+prefix and command. This will run on the first tmux session. The session running on the current machine's localhost.
+
+
+Summary of commands
+
+start tmux with session name 1,2,3 and so on:         tmux
+start tmux with specified sessionname :               tmux new -s sessionname
+change session name :                                 ctrl b shift b        
+deattach session :                                    ctrl b d
+list tmux sessions :                                  tmux ls
+reattach to session :                                 tmux attach -t sessionname
+reattach to a session written shorter:                tmux a -t sessionname
+creat a new session within a session:                 tmux new -s sessionname -d
+kill session :                                        tmux kill-session -t sessionname
+exit and close a session :                            exit
+switch between sessions :                             ctrl b s 
+closing all tmux sessions except the one specified :  tmux kill-sessions -t sessionname -a
+change starting directory of a active tmux session :  ctrl b shift :attach -c /path/to/new/starting/directory                   <------ did not work by me not sure why
+make a new tmux with new starting directory :         tmux new -s sessionname -c /path/to/new/start/directory                   <------ alternative
+
+Answers:nay,tmux new -s thm,ctrl b shift $,ctrl b d,tmux ls,tmux a -t thm ,tmux new -s kali -d ,ctrl b s,tmux kill-session -t thm,ctrl b ctrl b shift $
+Answers:ctrl b shift:,yea,yea,a -c /opt,tmux kill-session -t notes -a
 
 3.Manage tmux "Panes"
 
+Moving the panes clockwise works with the command ctrl b shift }, but by my keyboard it was alt gr or depending what keyboard i used so its not always the shift key it depends
+more on how you can make the } on your keyboard.Counter clockwise it is the same just use {.
+You can use already built in layouts with ctrl b esc 1-4 ( i guess it is till 4 no clue) but i would recommend use the ctrl b spacebar command to switch between different layouts
+and then choose which one you like the most.
 
+Summary of commands:
 
-4.Manage tmux "Winfows"
+split horizontally :            ctrl b shift " 
+split vertically :         	    ctrl b shift %
+switch between panes:           ctrl b arrowkey (right,left,up,down)
+close active pane:              exit
+switch to the next pane:        ctrl b o
+switch between most used panes: ctrl b;
+kill unresponsive pane :         ctrl b x y
+move panes clockwise:           ctrl b shift }                                                        <---- by me : ctrl b alt gr }
+move panes counter clockwise:   ctrl b shift {                                                        <---- by me : ctrl b alt gr {
+use built in layouts:           ctrl b esc 1
+switch between layouts:         ctrl b spacebar                                                       <---- recommended instead the command above
+identify the pane number:       ctrl b q                                                              <---- did not work by me 
+swap panes:                     ctrl b shift :swap-pane -s source pane -t destination pane
+swap panes:                     ctrl b shift :swap-pane -t  pane to swap -s currently selected pane 
 
+Answers:ctlr b shift ",exit,ctlr b shift %,ctlr b esc 1,ctrl b spacebar,ctrl b x y,ctrl b ;,yea,ctrl b shift {,ctrl b shift },ctrl b q,swap-pane -s 3 -t 1,swap-pane -t 4 -s 1
 
+4.Manage tmux "Windows"
+
+Detach a pane into a window with ctrl b shift ! and this new window is named "bash".
+
+Summary of commands:
+
+open a new window in an active session:                 ctrl b c
+rename the new window:                                  ctrl b ,
+detach a pane into its own window:                      ctrl b shift !
+cycle between the windows next window:                  ctrl b n                <-------- n=next (mnemonic bridge)
+cycle between the windows previous window:              ctrl b p                <-------- p=previous (mnemonic bridge)
+close the window:                                       ctrl b shift &
+join windows together:                                  ctrl b shift :join-pane -s source window name
+                                                        ctrl b shift :join-pane -t destination window name
+add -h or -v at the end to fuse horizontal or vertical
+
+Answers:ctrl b c,ctrl b ,,ctrl b shift !,join-pane -s bash,join-pane -t sudo,-v,-h,yea,ctrl b shift &,ctrl b w,ctrl b p,ctrl b n
 
 5.Tmux "copy" mode
 
+Summary of commands:
 
+Allows to scroll(copy mode) through down and up: ctrl b [
+exit scroll(copy mode):                          q
+search up a term or string:                      ctrl r term
+search up next same term:                        ctrl r
+search down a term or string:                    ctrl s term
+search down next same term:                      ctrl s
+hightlight to copy text:                         ctrl spacebar                <-------- didnt work by me because my browser was opening some other feature instead
+copy highlighted text to the tmux clipboard:     alt w
+paste text from clipboard:                       ctrl b ]
+check tmux clipboard:                            ctrl b shift #
+exit tmux clipboard check:                       q
+
+Answers:ctrl b [,ctrl t,ctrl s,esc,q,ctrl spacebar,alt w,ctrl b ],ctrl b shift #
 
 6.Oh My Tmux and beyond
 
+This 6th task goes a bit wild with getting a custom tmux conf running,i guess we probably gonna only need this when you are like deep into tmux and need your tmux
+customised to some degree.If u feel like this task got complicated just try to get throug it step by step and you still can answer the most questions. 
 
+Before crafting a custom configuration file for tmux. It might be a good idea to show all the options of the defaults. With tmux show -g argument for global.
+When creating the tmux configuration script it is important that. The file name is .tmux.conf and .tmux.conf is saved within the user's home directory /home/username/.tmux.conf
+
+set -g status-style bg='#44475a',fg='#8be9fd'
+This line is to modify the color of the status bar.
+
+setw -g window-status-current-style fg=black,bg=white
+
+This line adds highlight in the color of white for the currently selected window.
+
+set -g prefix C-a
+
+Allow changing the prefix from ctrl b to ctrl a. If there is any need to use the alt key instead of ctrl. Then set prefix as M-b or another second character, such as M-a. 
+Changing the prefix from ctrl b to alt a.
+
+As example we can change the horizontal and vertical 
+
+bind-key | split-window -h -c "#{pane_current_path}"
+bind-key - split-window -v -c "#{pane_current_path}"
+
+Using bind-key with | and - to add extra ways to split-window and create a new pane. The -c argument with "#{pane_current_path}" on the end. Allows any new pane within a 
+different directory to keep that directory path. Even if it is not the directory that session had started in.
+ctrl b shift | # will split horizontally
+ctrl b - # will split vertically
+
+# NOTE the .tmux.conf can also be reloaded by closing and restarting a new session. Or with the tmux command as
+
+tmux source /home/username/.tmux.conf
+
+In addition to calling script though .tmux.conf is calling custom plugins. The plugins are shown were sourced from GitHub.
+
+https://github.com/tmux-plugins/tmux-resurrect.git # save sessions to resume after a system reboot.
+https://github.com/tmux-plugins/tmux-logging.git # plugin for creating command history to review later.
+https://github.com/tmux-plugins/tmux-yank.git # plugin copy text from outside the tmux clipboard to use with other programs.
+
+The alternative to building a custom .tmux.conf configuration script it utilize a open-source .tmux.conf script. That can be easily found by searching online with Oh My Tmux. 
+For this example will use the tmuxconfig repository from github. that can be found at the link below.
+
+https://github.com/chaosma/tmuxconfig.git
+
+Had to google the last answer found the solution on the following link:
+https://www.classace.io/answers/how-can-you-run-the-desired-plugin-after-loading-it-in-tmux
+
+Answers:nay,/usr/share/doc/tmux,yea,home,source-file ~/.tmux.conf,tmux kill-server,bind,set -g prefix C-a,yea,set -g @plugin,run-shell
 
 7.Oreo's open-source.tmux.conf file
+
+If u wanna add/clone/fork Oreo's tmux conf then the following text is maybe interesting for you
+
+Here is a quick example script of installing my custom .tmux.conf script.
+
+#!/bin/bash
+# also comes with the repo as oreo-setup-script.sh
+cd ~/
+git clone https://github.com/OreoByte/another_omt.git
+chmod +x ~/another_omt/thm_vpn
+chmod +x ~/another_omt/curl_thm_vpn
+cp ~/another_omt/simple_tmux.conf ~/.tmux.conf
+
+# Great thanks to 0day, alanfoster, and briskets for helping me with this room.
+
+
