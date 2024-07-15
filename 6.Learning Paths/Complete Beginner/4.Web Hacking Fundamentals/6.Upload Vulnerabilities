@@ -1,5 +1,6 @@
 1.Getting started
 
+Completing the web enumeration (or at least the Gobuster section) and What the Shell and Intro to Networking rooms would be a good idea before attempting the content in this room.
 Copied the text since it is necessary to configure the host file and so on to complete this room.
 
 Please read and follow the instructions in this task carefully. If you skip over this task and encounter connectivity errors as a result, the Discord volunteers reserve the right to ignore you.
@@ -45,7 +46,21 @@ B) Having an anonymising VPN active alongside your TryHackMe VPN connection pack
 
 2.Introduction
 
+The ability to upload files to a server has become an integral part of how we interact with web applications. Be it a profile picture for a social media website, a report being uploaded to cloud storage, or saving a project on Github; the applications for file 
+upload features are limitless.
 
+Unfortunately, when handled badly, file uploads can also open up severe vulnerabilities in the server. This can lead to anything from relatively minor, nuisance problems; all the way up to full Remote Code Execution (RCE) if an attacker manages to upload and
+execute a shell. With unrestricted upload access to a server (and the ability to retrieve data at will), an attacker could deface or otherwise alter existing content -- up to and including injecting malicious webpages, which lead to further vulnerabilities 
+such as XSS or CSRF. By uploading arbitrary files, an attacker could potentially also use the server to host and/or serve illegal content, or to leak sensitive information. Realistically speaking, an attacker with the ability to upload a file of their choice
+to your server -- with no restrictions -- is very dangerous indeed.
+
+The purpose of this room is to explore some of the vulnerabilities resulting from improper (or inadequate) handling of file uploads. Specifically, we will be looking at:
+
+Overwriting existing files on a server
+Uploading and Executing Shells on a server
+Bypassing Client-Side filtering
+Bypassing various kinds of Server-Side filtering
+Fooling content type validation checks
 
 3.General Methodology
 
