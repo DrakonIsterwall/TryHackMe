@@ -118,7 +118,30 @@ installed by default on Kali and the SecLists repo, I doubt you'll need anything
 
 6.Practical: Gobuster(Deploy #1)
 
+Okay lets start with the practical stuff first we have to change the hosts file in the /etc/hosts , i would recommend to sudo nano /etc/hosts and then to add the values
+and to save it.When u gonna try to change/add values in the folder you cant do it, because it has a write protection.
 
+x.x.x.x=machine_ip
+
+The echo method didnt work for me and i used sudo nano instead.
+
+You will also need to add "webenum.thm" to your /etc/hosts file to start off with like so:
+echo "x.x.x.x webenum.thm" >> /etc/hosts
+
+You will also need to add any virtual hosts that you discover through the same way, before you can visit them in your browser i.e.:
+echo "x.x.x.x mysubdomain.webenum.thm" >> /etc/hosts
+
+I started with gobuster to get some directories
+gobuster dir -u http://x.x.x.x -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+
+For the second question you could make a new command with the -x flag/options and so on or what i did is open the website x.x.x.x/Changes and then i looked up the extensions.
+The third question is to find a flag, i looked up in the directories if i could find something and i did find it under x.x.x.x/VIDEO/flag.php
+
+The vhost mode is the next i used, gobuster vhost -u http://example.com -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt
+You have to check if the directory is correct, by me i had to change it from SecLists to seclists and then it worked.
+
+The answer in () is one answer
+Answers:(public,changes,video),(conf,js),thm{n1c3_w0rk}
 
 7.Introduction to WPScan
 
