@@ -280,7 +280,11 @@ Answers:(-p 80,8080),-Display 2
 
 nikto -h machine_ip
 
-Answers:apache/2.4.7,
+nmap machine_ip -sV
+
+nikto -h 10.10.64.208 -p 8080 -Display 2
+
+Answers:apache/2.4.7,Apache-Coyote/1.1,JSESSIONID
 
 13.Conclusion
 
