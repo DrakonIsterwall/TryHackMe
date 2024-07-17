@@ -155,26 +155,148 @@ Answers:(public,changes,video),(conf,js),thm{n1c3_w0rk},learning,products,thm{go
 
 7.Introduction to WPScan
 
+The WPScan framework is capable of enumerating & researching a few security vulnerability categories present in WordPress sites - including - but not limited to:
 
+Sensitive Information Disclosure (Plugin & Theme installation versions for disclosed vulnerabilities or CVE's)
+Path Discovery (Looking for misconfigured file permissions i.e. wp-config.php)
+Weak Password Policies (Password bruteforcing)
+Presence of Default Installation (Looking for default files)
+Testing Web Application Firewalls (Common WAF plugins)
+
+On Kali Linux it is already installed.
+
+Update the WPScan with the following command wpscan --update
 
 8.WPScan Modes
 
 
+Enumerating for Installed Themes
+We can look up how the theme is in a wordpress website with the developer tools of firefox/chrome and some searching.The other easier method is to use the WPScan wwith the 
+following command 
+
+wpscan --url http://cmnatics.playground/ --enumerate t 
+
+Result
+http://cmnatics.playground/wp-content/themes/twentytwentyone/assets
+
+Enumerating for Installed Plugins
+WPScan uses additional methods to discover plugins (such as looking for references or embeds on pages for plugin assets). We can use the --enumerate flag with the p argument
+like so:
+
+wpscan --url http://cmnatics.playground/ --enumerate p 
+
+Enumerating for Users
+We've highlighted that WPScan is capable of performing brute-forcing attacks. Whilst we must provide a password list such as rockyou.txt, the way how WPScan enumerates
+for users is interestingly simple. WordPress sites use authors for posts. Authors are in fact a type of user.
+
+wpscan --url http://cmnatics.playground/ --enumerate u 
+
+The "Vulnerable" Flag
+
+In the commands so far, we have only enumerated WordPress to discover what themes, plugins and users are present. At the moment, we'd have to look at the output and use 
+sites such as MITRE, NVD and CVEDetails to look up the names of these plugins and the version numbers to determine any vulnerabilities.
+WPScan has the v argument for the --enumerate flag. We provide this argument alongside another (such as p for plugins). For example, our syntax would like so: 
+wpscan --url http://cmnatics.playground/ --enumerate vp 
+
+Note, that this requires setting up WPScan to use the WPVulnDB API which is out-of-scope for this room. 
+You need to get an API Token so you can connect to the Database and make 50 requests a day.
+
+Performing a Password Attack
+After determining a list of possible usernames on the WordPress install, we can use WPScan to perform a bruteforcing technique against the username we specify and a password
+list that we provide. Simply, we use the output of our username enumeration to build a command like so: 
+
+wpscan –-url http://cmnatics.playground –-passwords rockyou.txt –-usernames cmnatic
+
+Adjusting WPScan's Aggressiveness (WAF)
+Unless specified, WPScan will try to be as least "noisy" as possible. Lots of requests to a web server can trigger things such as firewalls and ultimately result in you 
+being blocked by the server.
+
+This means that some plugins and themes may be missed by our WPScan. Luckily, we can use arguments such as --plugins-detection and an aggressiveness profile 
+(passive/aggressive) to specify this. For example: --plugins-detection aggressive
+
+Answer:http://cmnatics.playground/wp-content/themes/twentynineteen,enumerate,passive
 
 9.Practical: WPScan (Deploy #2)
 
+Start the machine and add the machine_ip and wpscan.thm to your hosts file.
+wpscan --url http://wpscan.thm/ --enumerate t
+wpscan --url http://wpscan.thm/ --enumerate p
+wpscan --url http://wpscan.thm/ --enumerate u
+wpscan --url http://wpscan.thm --passwords rockyou.txt --usernames phreakazoid
 
+Answers:twentynineteen,nextgen-gallery,phreakazoid,linkinpark
 
 10.Introduction to Nikto
 
-
+Nikto is already installed on Kali Linux.
 
 11.Nikito Modes
 
+Basic scan
+nikto -h vulnerable_ip or domain
 
+Scanning Multiple Hosts & Ports
+For example, we can scan 172.16.0.0/24 (subnet mask 255.255.255.0, resulting in 254 possible hosts) with Nmap (using the default web port of 80) and parse the output to 
+Nikto like so: nmap -p80 172.16.0.0/24 -oG - | nikto -h - 
+
+There are not many circumstances where you would use this other than when you have gained access to a network. A much more common scenario will be scanning multiple ports 
+on one specific host. We can do this by using the -p flag and providing a list of port numbers delimited by a comma - such as the following: 
+nikto -h 10.10.10.1 -p 80,8000,8080
+
+We can specify the plugin we wish to use by using the -Plugin argument and the name of the plugin we wish to use...For example, to use the "apacheuser" plugin, 
+our Nikto scan would look like so: nikto -h 10.10.10.1 -Plugin apacheuser
+
+List of plugins:
+https://github.com/sullo/nikto/wiki/Plugin-list
+
+Verbosing our Scan
+
+We can increase the verbosity of our Nikto scan by providing the following arguments with the -Display flag. Unless specified, the output given by Nikto is not the entire 
+output, as it can sometimes be irrelevant (but that isn't always the case!) 
+
+Arguments are 1,2,E.
+1:Show any redirects that are given by the web server.Web servers may want to relocate us to a specific file or directory, so we will need to adjust our scan accordingly for 
+this.
+2:Show any cookies received 	Applications often use cookies as a means of storing data. For example, web servers use sessions, where e-commerce sites may store products 
+in your basket as these cookies. Credentials can also be stored in cookies.
+E:Output any errors	This will be useful for debugging if your scan is not returning the results that you expect!
+
+Nikto has several categories of vulnerabilities that we can specify our scan to enumerate and test for. The following list is not extensive and only include the ones that
+you may commonly use. We can use the -Tuning flag and provide a value in our Nikto scan: 
+
+Arguments are 0,2,3,4,8,9
+
+0:FileUpload,2:Misconfig/Default,3:InformationDisclosure,4:Injection,8:CommandExecution,9:SQLInjection
+
+Saving Your Findings
+We can use the -o argument (short for -Output) and provide both a filename and compatible extension. We can specify the format (-f) specifically, but Nikto is smart enough
+to use the extension we provide in the -o argument to adjust the output accordingly.Works for txt and html.
+
+nikto -h http://ip_address -o report.html
+
+Answers:(-p 80,8080),-Display 2
 
 12.Nikto Practical (Deploy #3)
 
 
 
+Answers:
+
 13.Conclusion
+
+Where to go from here (recommended rooms)
+
+GoBuster:
+
+    OWASP Top 10 (Walkthrough)
+    EasyPeasyCTF (Challenge)
+
+WPScan:
+
+    Blog (Challenge)
+
+Nikto:
+
+    OWASP Top 10 (Walkthrough)
+    ToolsRUs (Walkthrough)
+    EasyCTF (Challenge)
