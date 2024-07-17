@@ -140,8 +140,18 @@ The third question is to find a flag, i looked up in the directories if i could 
 The vhost mode is the next i used, gobuster vhost -u http://example.com -w /usr/share/wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt
 You have to check if the directory is correct, by me i had to change it from SecLists to seclists and then it worked.
 
+Had to look up the last 2 answers with a walkthrough because it did not work by me kinda the vhost search did not show up any useful result.I looked up the 
+subdomains-top1million-5000.txt and there is even the learning and products in so i dont know exactly why it is not working.
+I added the learning.webenum.thm and the products.webenum.thm and i could reach it and then i could see the flag under http://products.webenum.thm/flag.txt
+
+Walktrough link:
+https://octothorp88.medium.com/tryhackme-web-enumeration-d72c29941cff
+
+My gobuster is 3.6 and this one in the walkthrough is 3.0.1 so maybe something changed or i missconfigured something.Have to test it with the attack box in future if this 
+shows me a different result.
+
 The answer in () is one answer
-Answers:(public,changes,video),(conf,js),thm{n1c3_w0rk}
+Answers:(public,changes,video),(conf,js),thm{n1c3_w0rk},learning,products,thm{gobuster_is_fun}
 
 7.Introduction to WPScan
 
