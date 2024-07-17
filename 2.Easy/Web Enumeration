@@ -278,9 +278,9 @@ Answers:(-p 80,8080),-Display 2
 
 12.Nikto Practical (Deploy #3)
 
+nikto -h machine_ip
 
-
-Answers:
+Answers:apache/2.4.7,
 
 13.Conclusion
 
