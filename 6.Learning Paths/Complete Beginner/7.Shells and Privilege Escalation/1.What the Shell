@@ -33,6 +33,8 @@ Answer:R,N,T
     -n tells netcat not to resolve host names or use DNS. Explaining this is outwith the scope of the room.
     -p indicates that the port specification will follow.
 
+sudo nc -lvnp 443
+
 The example in the previous task used port 443. Realistically you could use any port you like, as long as there isn't already a 
 service using it. 
 Be aware that if you choose to use a port below 1024, you will need to use sudo when starting your listener. That said, it's often
@@ -43,7 +45,16 @@ Answer:-l,nc 10.10.10.11 8080
 
 5.Netcat Shell Stabilisation
 
-Have to write a script or look how to add it properly in my routine or try socat in future.
+Example of python method:
+
+sudo nc -lvnp 443
+python -c 'import pty;pty.spawn("/bin/bash")'
+export TERM=xterm
+Ctrl + Z
+stty raw -echo; fg
+whoami
+
+The command with python has to be checked if it is python,python2,python3
 
 Answer:stty cols 238,sudo python3 -m http.server 80
 
