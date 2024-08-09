@@ -88,9 +88,10 @@ files designed to provoke errors can help with this. Tools like Burpsuite or OWA
 
 4.Overwriting Existing Files
 
+To get to the website we have to use http://overwrite.uploadvulns.thm
+I dont know why they did not correct it in the room since only overwrite.uploadvulns.thm did not work for me so be sure to add http:// before every uploadvulns.thm
 
-
-5.Remote Code Execution#
+5.Remote Code Execution
 
 
 
