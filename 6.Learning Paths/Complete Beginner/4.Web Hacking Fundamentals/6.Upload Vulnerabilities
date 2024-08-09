@@ -91,13 +91,65 @@ files designed to provoke errors can help with this. Tools like Burpsuite or OWA
 To get to the website we have to use http://overwrite.uploadvulns.thm
 I dont know why they did not correct it in the room since only overwrite.uploadvulns.thm did not work for me so be sure to add http:// before every uploadvulns.thm
 
+Then we onspect the code of the webpage and we see the the image mountains.jpg we search for a jpg file or create one and then we name it the exact same to overwrite the 
+existing file.After we uploaded it we get our flag.
+
+Answers:mountains.jpg,THM{OTBiODQ3YmNjYWZhM2UyMmYzZDNiZjI5} 
+
 5.Remote Code Execution
 
+We use gobuster to enumerate the folder so we get to know where the uploaded files are saved.
+
+gobuster dir -u http://shell.uploadvulns.thm -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+
+We get the information that /resources is a folder with http://shell.uploadvulns.thm/resources we can look into the folder after we uploaded a file.
+
+I used the php-reverse-shell.php from pentestmonkey.
+https://raw.githubusercontent.com/pentestmonkey/php-reverse-shell/master/php-reverse-shell.php
+
+I changed the ip address in the php to my tun0 (the ip it shows me in kali linux on the top right corner when i used the openvpn connection to the tryhackme servers)
+I did not change the port but you can if you want just dont try to go under 1024 then you have to use sudo nc when i am not wrong.
+then i setup a listener in the terminal with:
+nc -lvnp 1234
+
+After we edited the file and uploaded the php file and setup the listener we browse to the following address to execute the php.
+http://shell.uploadvulns.thm/resources/php-reverse-shell.php
+
+If everything worked we should see that our listener got a connection then we can check with whoami which user we are so we are to be sure that it connected
+(mostly its www-data) and then we use ls to see the folder structure then we brwose to var with cd var and then we browse to www with cd www.In this folder we have a flag.txt
+and we can see the content with cat flag.txt.
+
+Answers:/resources,THM{YWFhY2U3ZGI4N2QxNmQzZjk0YjgzZDZk}
 
 
 6.Filtering
 
+Extension Validation:
+They either blacklist extensions (i.e. have a list of extensions which are not allowed) or they whitelist extensions
+(i.e. have a list of extensions which are allowed, and reject everything else).
 
+File Type Filtering:
+Similar to Extension validation, but more intensive, file type filtering looks, once again, to verify that the contents of a file are acceptable to upload. 
+The MIME type for a file can be checked client-side and/or server-side; however, as MIME is based on the extension of the file, this is extremely easy to bypass.
+
+File Length Filtering:
+As an example, our fully fledged PHP reverse shell from the previous task is 5.4Kb big -- relatively tiny, but if the form expects a maximum of 2Kb then we would 
+need to find an alternative shell to upload.
+
+File Name Filtering:
+As touched upon previously, files uploaded to a server should be unique. Usually this would mean adding a random aspect to the file name, however, an alternative strategy 
+would be to check if a file with the same name already exists on the server, and give the user an error if so. Additionally, file names should be sanitised on upload to 
+ensure that they don't contain any "bad characters", which could potentially cause problems on the file system when uploaded (e.g. null bytes or forward slashes on Linux, 
+as well as control characters such as ; and potentially unicode characters). What this means for us is that, on a well administered system, our uploaded files are unlikely 
+to have the same name we gave them before uploading, so be aware that you may have to go hunting for your shell in the event that you manage to bypass the content filtering.
+
+File Content Filtering:
+More complicated filtering systems may scan the full contents of an uploaded file to ensure that it's not spoofing its extension, MIME type and Magic Number. 
+This is a significantly more complex process than the majority of basic filtration systems employ, and thus will not be covered in this room.
+
+google: mime type csv
+
+Answers:PHP,Whitelist,text/csv
 
 7.Bypass Client-Side Filtering
 
