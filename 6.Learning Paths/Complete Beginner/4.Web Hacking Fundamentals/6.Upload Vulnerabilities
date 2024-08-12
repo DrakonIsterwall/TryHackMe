@@ -180,11 +180,18 @@ www-data.We brwowse to var/www and use cat flag.txt to get the flag.
 
 Answer:THM{NDllZDQxNjJjOTE0YWNhZGY3YjljNmE2}
 
-8.Bypass Client-Side Filtering:File Extensions
+8.Bypass Server-Side Filtering:File Extensions
 
+I tried to look into Burpsuite if i get some informations but it looked just obfuscated so i stopped that and tried different file extension.
+I looked up in the internet which .php file extension there are and starting testing if .php , php2,php3 and so on works.All failed only php5 worked for me and then i set up
+my nc -lvnp 1234 and clicked on my uploaded file to start the reverse shell.
 
+Use gobuster to find the folder where the files are uploaded too.
+Then browse again to var/www and get the flag with cat flag.txt
 
-9.Bypass Client-Side Filtering:Magic Numbers
+Answer:THM{MGEyYzJiYmI3ODIyM2FlNTNkNjZjYjFl}
+
+9.Bypass Server-Side Filtering:Magic Numbers
 
 
 
