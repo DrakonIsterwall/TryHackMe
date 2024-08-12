@@ -193,7 +193,19 @@ Answer:THM{MGEyYzJiYmI3ODIyM2FlNTNkNjZjYjFl}
 
 9.Bypass Server-Side Filtering:Magic Numbers
 
+This one was pretty easy, first i tried to upload a jpeg and got the error that it only allows gifs , i looked up magic bytes/magic numbers for gif.
 
+https://en.wikipedia.org/wiki/List_of_file_signatures
+
+I used this one 47 49 46 38 37 61 , add 6 times A or for better reading 3 times A and 3 times B in the php-reverse-shell.php,we open it then with the hexeditor and change
+the first numbers 6 pairs to the numbers we looked up for the gif.We setup our nc -lvnp 1234 and and then we useg bosuter again to find a directory.THe directory is /graphics
+, that means since we do not have indexing we need to type in the url or copy part of it from gobuster into our browser and then add the php-reverse-shell.php
+
+http://magic.uploadvulns.thm/graphics/php-reverse-shell.php
+
+U should get a connection and then move to /var/www and get the flag with cat flag.txt
+
+Answer:THM{MWY5ZGU4NzE0ZDlhNjE1NGM4ZThjZDJh}
 
 10.Example Methodology
 
