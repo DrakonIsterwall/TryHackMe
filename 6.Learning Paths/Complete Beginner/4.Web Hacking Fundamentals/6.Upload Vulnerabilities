@@ -153,7 +153,32 @@ Answers:PHP,Whitelist,text/csv
 
 7.Bypass Client-Side Filtering
 
+I set up my Burpsuite and changed under Proxy,Settings,Request Interception Rules edit the condition of the first line to remove ^js$| , else you not gonna see external 
+javascripts of the websites you are targeting.
 
+Then we turn on the intercept (you can then either use the built in browser or your own setup on firefox with a Foxy Proxy, i have chosen the built in browser) and then we 
+visit the website http://java.uploadvulns.thm  , we gonna get our first intercept in burpsuite ,rightclick under the line 10 then you go on the option: do intercept ,response 
+to this request and then forward to get the reponse with the javascripts that we wanna break so we can upload a file without restrictions.
+
+Remove this block of code
+
+	<script src="assets/js/firstload.js"></script>
+	
+	<script src="assets/js/client-side-filter.js"></script>
+
+Then Forward ,upload your file(i uploaded again the php-reverse-shell.php from pentestmonkey) and Forward the incoming interceptions.Dont forget to change the ip/conf of 
+the php when needed.
+If everything worked out you should see in green letters that the upload was sucessfull.
+
+After we already done the major work we start to search with gobuster for the directory of the "images" or wherever the files are uploaded.
+
+obuster dir -u http://java.uploadvulns.thm -w /usr/share/wordlists/dirbuster/directory-list-2.3-medium.txt
+
+In our case its the folder http://java.uploadvulns.thm/images if we open it we can find our php file that we uploaded.
+Dont forget to setup your listener with nc -lvnp 1234 and then we click on our php file.We should get an incoming connection and with whoami we can test that it changed to
+www-data.We brwowse to var/www and use cat flag.txt to get the flag.
+
+Answer:THM{NDllZDQxNjJjOTE0YWNhZGY3YjljNmE2}
 
 8.Bypass Client-Side Filtering:File Extensions
 
