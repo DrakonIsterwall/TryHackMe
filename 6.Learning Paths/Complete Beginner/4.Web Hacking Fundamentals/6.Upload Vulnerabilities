@@ -249,10 +249,10 @@ You should now be well equipped to take on the challenge in task eleven.
 
 11.Challenge
 
-We download the first the file because it has a wordlist that we can use. Our next flag is in /var/www on http://jewel.uploadvulns.thm , so we browse to the website and look
+We download first the file because it has a wordlist that we can use. Our next flag is in /var/www on http://jewel.uploadvulns.thm , so we browse to the website and look
 how it works.
 
-Our test image moiuntains.jpg could be uploaded. I enumerated with gobuster used directory-list-2.3-medium.txt and found :
+Our test image mountains.jpg could be uploaded. I enumerated with gobuster used directory-list-2.3-medium.txt and found :
 
 http://jewel.uploadvulns.thm/admin  		Status 200	(indexed and can be accessed)
 http://jewel.uploadvulns.thm/content		Status 301	(not indexed can be accessed)
