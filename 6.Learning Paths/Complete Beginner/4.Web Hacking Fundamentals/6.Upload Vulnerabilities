@@ -259,4 +259,34 @@ http://jewel.uploadvulns.thm/content		Status 301	(not indexed can be accessed)
 http://jewel.uploadvulns.thm/assets		Status 301
 http://jewel.uploadvulns.thm/modules		Status 301
 
+I looked up the admin site and thought thats probably our way to load the reverse shell because it loads modules and that means it is loading javascript code.
+How i know that it is javascript code ? I started burpsuite and looked up how the website works and what it is loading and so on.I turn on the intercept and change in the 
+settings the request interception rules and edit the first line and remove the |^js| else we dont see the javascripts.Then i open the built in browser and browse to the 
+website http:/jewel.uploadvulns.thm ,looked up the intercept and rightclick and do intercept response with that i can see how the webiste is build.
+
+X-Powered-By: Express
+Gives me the information that it is using the porgramming language javascript because im familiar a little bit with express but else we can google it.
+
+I tried : Express webframework,express programming language 
+That brought me the conformation that it is javascript.
+
+To get a faster information you can use wappalyzer in firefox.I totally recommend it since it is way faster then searching it on your own but its good to know the basics.
+With that information we know that our php script is probably not the solution, that means we need a reverse-shell in javascript.
+
+https://github.com/swisskyrepo/PayloadsAllTheThings/
+
+On the github we can find the reverse shell cheat sheet
+https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Reverse%20Shell%20Cheatsheet.md
+
+When we googled we got this answer:
+
+What Is Express JS? Express is a node js web application framework that provides broad features for building web and mobile applications.
+
+So we choose the NodeJs in the cheatsheet and then use the script there and copy it into an .js file and change the ip and port in it to the port 1234 as example and the ip
+to the tun0 ip we have.
+
+break for now gonna continue writing later.
+
+Answer:THM{NzRlYTUwNTIzODMwMWZhMzBiY2JlZWU2}
+
 12.Conclusion
